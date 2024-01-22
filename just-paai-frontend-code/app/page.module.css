@@ -17,6 +17,8 @@
   align-items: center;
   padding: 2rem;
   background-color: white;
+  min-width: max-content;
+  min-height: max-content;
 }
 .logoContainer{
   margin-bottom: min(2rem, 3vh);
