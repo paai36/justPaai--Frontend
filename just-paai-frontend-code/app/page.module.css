@@ -9,7 +9,7 @@
 }
 .loginContainer{
   width: 30vw;
-  margin-right: 1vw;
+  margin-right: min(5vh,30px);
   height: 95vh;
   display: flex;
   flex-direction: column;
