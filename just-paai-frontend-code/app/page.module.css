@@ -76,3 +76,12 @@
   display: flex;
   justify-content: space-around;
 }
+@media screen and (max-width: 600px) {
+  .pageWrapper{
+    justify-content: center;
+  }
+  .loginContainer{
+    align-self: center;
+    margin-right: 0;
+  }
+}
