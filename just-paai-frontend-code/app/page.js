@@ -11,7 +11,7 @@ export default function Home() {
       <Image src={logo} alt="logo"/>
     </div>
     <div className={styles.heading}>
-      <h1>Start Your Journey With Lawdiary</h1>
+      <h1>Start Your Journey With Lawdairy</h1>
       <h2>Description line</h2>
     </div>
     <div className={styles.formContainer}>
