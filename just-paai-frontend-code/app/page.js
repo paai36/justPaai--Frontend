@@ -4,30 +4,30 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import logo from "../public/assets/logo.svg";
 import Link from "next/link";
-// import { GoogleLogin } from "react-google-login";
+import { GoogleLogin } from "react-google-login";
 import { useEffect } from "react";
-// import { gapi } from "gapi-script";
+import { gapi } from "gapi-script";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
-  // const router = useRouter();
-  // const onSuccess = (res) => {
-  //   console.log("LOGIN SUCCESS! Current user: ", res.profileObj);
-  //   router.push("/onboarding");
-  // };
-  // const onFailure = (res) => {
-  //   console.log("LOGIN Failed! res: ", res);
-  // };
-  // const ClientID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
-  // useEffect(() => {
-  //   function start() {
-  //     gapi.client.init({
-  //       clientId: { ClientID },
-  //       scope: "",
-  //     });
-  //   }
-  //   gapi.load("client:auth2", start);
-  // });
+  const router = useRouter();
+  const onSuccess = (res) => {
+    console.log("LOGIN SUCCESS! Current user: ", res.profileObj);
+    router.push("/onboarding");
+  };
+  const onFailure = (res) => {
+    console.log("LOGIN Failed! res: ", res);
+  };
+  const ClientID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: { ClientID },
+        scope: "",
+      });
+    }
+    gapi.load("client:auth2", start);
+  });
   return (
     <>
       <div className={styles.pageWrapper}>
@@ -86,17 +86,16 @@ export default function Home() {
               </button>
             </form>
             <div className={styles.authButtons}>
-              <button>
-                {/* <GoogleLogin
+              {/* <button> */}
+              <GoogleLogin
                 clientId={ClientID}
                 buttonText="Login With Google"
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 cookiePolicy={"single_host_origin"}
                 isSignedIn={true}
-              /> */}
-                Login With Google
-              </button>
+              />
+              {/* </button> */}
               <button>Login With Google</button>
             </div>
             <div className={styles.loginText}>
