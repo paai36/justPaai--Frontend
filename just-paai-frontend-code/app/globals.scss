@@ -1,0 +1,43 @@
+@import "imports.module";
+
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
+@mixin disappear-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+main{
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background-color: $background;
+  display: grid;
+  grid-template-columns: 2fr 9fr;
+  position: fixed;
+  overflow: hidden;
+  @include disappear-scrollbar;
+
+  nav.sidebar {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0vh;
+    padding-top: 1vh;
+    padding-bottom: 0;
+    align-items: center;
+    position: relative;
+    min-width: 15vw;
+  }
+}
