@@ -18,7 +18,7 @@ body {
   margin: 0;
   padding: 0;
 }
-main{
+main {
   width: 100vw;
   height: 100vh;
   padding: 0;
@@ -28,16 +28,117 @@ main{
   grid-template-columns: 2fr 9fr;
   position: fixed;
   overflow: hidden;
+  background: #eee;
   @include disappear-scrollbar;
 
   nav.sidebar {
     display: flex;
     flex-direction: column;
     row-gap: 0vh;
-    padding-top: 1vh;
     padding-bottom: 0;
-    align-items: center;
     position: relative;
     min-width: 15vw;
+    border-right: 1px solid #c4c4c4;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: min-content;
+    h1 {
+    }
+    div.yourspace {
+      display: flex;
+      padding: 0;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: start;
+      p.routeHead {
+        color: #939393;
+        font-family: Inter;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin: 0;
+      }
+      ul.routes {
+        margin: 1vh 0 0 0;
+        display: flex;
+        flex-direction: column;
+        row-gap: 1vh;
+        padding: 0;
+        li.route {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          column-gap: 1vw;
+          list-style: none;
+          padding: 1vh 1vw;
+          padding-left: 0;
+          border-radius: 12px;
+          cursor: pointer;
+          font-size: 1.1rem;
+          font-weight: 500;
+        }
+        li.selected {
+          background-color: #939393;
+          font-size: 1.2rem;
+        }
+      }
+    }
+    p.caseHead {
+      color: #939393;
+      font-family: Inter;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      margin: 0;
+    }
+    div.selectedCase {
+      background: #e7e7e7;
+      display: flex;
+      padding: 0;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: start;
+      row-gap: 2vh;
+      max-width: fit-content;
+      div.casename {
+        display: flex;
+        flex-direction: row;
+        cursor: pointer;
+        max-width: 80%;
+        p {
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          font-weight: 500;
+          text-wrap: nowrap;
+          max-width: 40%;
+          text-overflow: ellipsis;
+          font-size: 1.3rem;
+        }
+      }
+      ul.dropDown {
+        margin: 1vh 0 0 0;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        li {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          column-gap: 1vw;
+          list-style: none;
+          padding: 1vh 1vw;
+          padding-left: 0;
+          border-radius: 12px;
+          cursor: pointer;
+          font-size: 1.1rem;
+          font-weight: 500;
+        }
+      }
+    }
   }
 }
