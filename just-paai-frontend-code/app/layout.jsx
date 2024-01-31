@@ -2,7 +2,7 @@
 
 import { Inter } from "next/font/google";
 import "./globals.scss";
-import { useSidebarStore } from "@/store";
+import { useSidebarStore } from "../store";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
     dropdown: ["DashBoard", "Research", "Invoices", "Legal Notices"],
   };
   useEffect(() => {
-    setShowSidebar(pathname && pathname !== "/");
+    setShowSidebar(pathname && pathname !== "/Landing");
   }, [pathname]);
   return (
     <html lang="en">
