@@ -6,6 +6,7 @@ import { useSidebarStore } from "../store";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { signOut } from "../config/firebaseApp.config";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,6 +17,10 @@ export default function RootLayout({ children }) {
   const setShowSidebar = useSidebarStore(
     ({ setShowSidebar }) => setShowSidebar
   );
+  const handleLogOut = () => {
+    signOut();
+    router.push("/");
+  }
   const [openDropDown, setOpenDropDown] = useState(true);
   const routes = [
     {
@@ -36,7 +41,7 @@ export default function RootLayout({ children }) {
     dropdown: ["DashBoard", "Research", "Invoices", "Legal Notices"],
   };
   useEffect(() => {
-    setShowSidebar(pathname && pathname !== "/Landing");
+    setShowSidebar(pathname !== "/" && pathname !== "/Landing");
   }, [pathname]);
   return (
     <html lang="en">
@@ -46,7 +51,7 @@ export default function RootLayout({ children }) {
           <main>
             {showSidebar ? (
               <nav className="sidebar">
-                <h1>JUSTPAAI</h1>
+                <img src="/assets/logo2.svg"></img>
                 <div className="yourspace">
                   <p className="routeHead">Your Spaces</p>
                   <ul className="routes">
@@ -71,9 +76,9 @@ export default function RootLayout({ children }) {
                     ))}
                   </ul>
                 </div>
-                
+                <div className="selectedCase">
                   <p className="caseHead">Selected Case</p>
-                  <div className="selectedCase">
+                  <div className="caseWrapper">
                     <div
                       className="casename"
                       onClick={() => setOpenDropDown((state) => !state)}
@@ -102,7 +107,21 @@ export default function RootLayout({ children }) {
                       </ul>
                     )}
                   </div>
-                
+                </div>
+                <div className="buttons">
+                  <button className="reachout">
+                    <img src="/textbox.svg"></img>
+                    Reach Out To Us
+                  </button>
+                  <div className="reportLogout">
+                    <button className="report">
+                      Report Error <img src="/report.svg"></img>
+                    </button>
+                    <button className="logout" onClick={handleLogOut}>
+                      Logout <img src="/signout.svg"></img>
+                    </button>
+                  </div>
+                </div>
               </nav>
             ) : (
               <></>
