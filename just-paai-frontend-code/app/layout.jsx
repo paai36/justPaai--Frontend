@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
   const handleLogOut = () => {
     signOut();
     router.push("/");
-  }
+  };
   const [openDropDown, setOpenDropDown] = useState(true);
   const routes = [
     {

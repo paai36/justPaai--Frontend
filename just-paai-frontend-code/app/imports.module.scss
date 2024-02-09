@@ -1,1 +1,37 @@
-$background:  rgba(255, 255, 255, 0.00);
+$background: rgba(255, 255, 255, 0);
+$blue60: #186ade;
+$gray20: #dce3e8;
+$transparent: transparent;
+$red60: #d91f11;
+$white: #ffffff;
+$gray90: #1c2b36;
+$green60: #077d55;
+$yellow30: #f5c518;
+$blue20: #d4e4fa;
+$green20: #c7ebd1;
+$red20: #fadcd9;
+$yellow10: #faf6cf;
+$gray110: #090f14;
+$gray70: #3e5463;
+$blue70: #0d4ea6;
+$green70: #075e45;
+$gray90: #090f14;
+$orange50: #e86427;
+$gs_brand: #7399c6;
+$border: #BEC7CC;
+$gray80 : #1E1E1E;
+$gray0: #FAFAFA;
+$semantic_secondary: #FC9162;
+$semantic_success: #4CAF50;
+$blue50: #1195D6;
+$gray60: #5F6466;
+
+@mixin disappear-scrollbar {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
