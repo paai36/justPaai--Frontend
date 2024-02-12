@@ -6,7 +6,7 @@ import { useSidebarStore } from "../store";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { signOut } from "../config/firebaseApp.config";
+import { signOut } from "../config/firebaseApp.ts";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,11 +29,15 @@ export default function RootLayout({ children }) {
     },
     {
       name: "All Cases",
-      url: "/allcases",
+      url: "/allCases",
     },
     {
       name: "Legal Notices",
       url: "/legalnotices",
+    },
+    {
+      name: "Profile",
+      url: "/profile",
     },
   ];
   const selectedCase = {
@@ -59,7 +63,7 @@ export default function RootLayout({ children }) {
                       <li
                         key={index}
                         onClick={() => {
-                          // router.push(route.url); have to uncomment after making the pages
+                          router.push(route.url);
                         }}
                         className={
                           pathname === route.url ? "route selected" : "route"

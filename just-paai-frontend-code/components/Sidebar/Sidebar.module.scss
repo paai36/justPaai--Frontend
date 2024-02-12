@@ -1,0 +1,123 @@
+@import "../../app/imports.module.scss";
+
+div.sidebar {
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    border: 1px solid $gray20;
+    padding: 3vh 1vw;
+    border-radius: 10px;
+    height: 90vh;
+    background-color: $white;
+    div.clientCard {
+        background-color: $gray10;
+        display: flex;
+        justify-content: row;
+        align-items: center;
+        padding: 2vh 1vw;
+        border-radius: 10px;
+        column-gap: 1vw;
+        max-height: fit-content;
+            img {
+                border-radius: 100px;
+                height: 4rem;
+                width: 4rem;
+            }
+            div {
+                // padding: 1vh 0;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start; 
+                padding: 2vh;
+                row-gap: 1vh;
+                p {
+                    color: $gray60;
+                    margin: 0;
+
+                }
+                h3 {
+                    font-size: 1.3rem;
+                    margin: 0;
+                }
+            }
+    }
+    div.cal {
+        display: flex;
+        flex-direction: column;
+        padding: 1vh 1vw;
+        p {
+            color: $blue80;
+            display: flex;
+            align-items: center;
+            column-gap: 0.5vw;
+            cursor: pointer;
+            transition: text-decoration 0.3s ease;
+            &:hover {
+                text-decoration: underline 1px $blue80;
+            }
+        }
+    }
+    div.upNext {
+        padding: 1vh 1vw;
+        p.heading {
+            margin: 0;
+        }
+        ul {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            row-gap: 2vh;
+            overflow-y: scroll;
+            @include disappear-scrollbar;
+            max-height: 25vh;
+            li{
+                list-style: none;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                cursor: pointer;
+                div.leftWrapper {
+                    display: flex;
+                    flex-direction: row;
+                    column-gap: 1vw;
+                    align-items: center;
+                    padding: 0;
+                    img {
+                        height: 1.5rem;
+                        width: 1.5rem;
+                    }
+                    div.right {
+                        p {
+                            margin: 0;
+                        }
+                        p.date {
+                            color: $blue70;
+                            font-size: 1rem;
+                        }
+                        p.name {
+                            font-size: 0.7rem;
+                            color: $gray60;
+                        }
+                    }
+                }
+                div.goto {
+                }
+            }
+        }
+    }
+    div.newEventbtn {
+        padding: 0 1vw;
+        margin-top: auto;
+        button {
+            color: $white;
+			width: 100%;
+			background-color: $blue60;
+			border: none;
+			padding: 2vh 3vw;
+			border-radius: 12px;
+			cursor: pointer;
+			align-self: flex-end;
+        }
+    }
+}

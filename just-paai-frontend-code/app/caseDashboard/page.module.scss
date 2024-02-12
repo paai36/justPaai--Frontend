@@ -1,0 +1,10 @@
+@import "../imports.module.scss";
+
+section.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:2vh 2vw;
+    background-color: $gray0;
+    column-gap: 2vw;
+}

@@ -15,7 +15,7 @@ function CaseRow({ caseData }: { caseData: CaseInterface }) {
             <p className={styles.clientName}>{caseData.ClientName}</p>
             <p className={caseData?.Status === "Archived" ? styles.statusArch : styles.statusActive}>{caseData.Status}</p>
             <p className={styles.DateStarted}>{caseData.DateStarted}</p>
-            <p className={styles.viewbtn}>View &#62;</p>
+            <p className={styles.viewbtn}>view &#62;</p>
         </div>
     )
 }
