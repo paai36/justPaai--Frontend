@@ -63,7 +63,7 @@ export default function Sidebar() {
                                 </div>
                             </div>
                             <div className={styles.goto}>
-                                <img src="/rightcrr.svg" alt=">"></img>
+                                <img src="/rightCrr.svg" alt=">"></img>
                             </div>
                         </li>
                     ))}
