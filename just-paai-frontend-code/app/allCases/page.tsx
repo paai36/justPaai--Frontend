@@ -54,31 +54,31 @@ export default function allCases() {
     },
     {
         CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
-        ClientName: "Peter Griffin",
+        ClientName: "Ritik Chandra",
         DateStarted: "09 Jan 2024",
         Status: "Active",
     },
     {
         CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
-        ClientName: "Aryan Dogra",
+        ClientName: "Keshav Jalan",
         DateStarted: "09 Jan 2024",
         Status: "Active",
     },
     {
         CaseName: "hsrh fhusssshsssssrugh rehgehtgiohe tuhg oteh ggggh hhhhhhhhh iu ghuihrguiheuigheuh gegewtuhg uiethgiuph",
-        ClientName: "Aryan Jain",
+        ClientName: "Keshav Jalan",
         DateStarted: "09 Jan 2024",
         Status: "Active",
     },
     {
         CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
-        ClientName: "Ritik Singhal",
+        ClientName: "Keshav Jalan",
         DateStarted: "09 Jan 2024",
         Status: "Active",
     },
     {
         CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
-        ClientName: "Bhanu Khandelwal",
+        ClientName: "Ritik Chandra",
         DateStarted: "09 Jan 2024",
         Status: "Active",
     },]
