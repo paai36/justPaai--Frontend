@@ -22,9 +22,6 @@ function CaseRow({ caseData }: { caseData: CaseInterface }) {
 
 export default function allCases() {
     //currently using ClientSide Rendering if server side is to be used later then remove "use client" from the top of the page
-
-    const router = useRouter();
-
     const allCasesDummy: CaseInterface[] = [{
         CaseName: "Haryana Dairy nuaray, 1947",
         ClientName: "Keshav Jalan",
@@ -57,34 +54,49 @@ export default function allCases() {
     },
     {
         CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
-        ClientName: "Keshav Jalan",
+        ClientName: "Peter Griffin",
         DateStarted: "09 Jan 2024",
         Status: "Active",
     },
     {
         CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
-        ClientName: "Keshav Jalan",
+        ClientName: "Aryan Dogra",
         DateStarted: "09 Jan 2024",
         Status: "Active",
     },
     {
         CaseName: "hsrh fhusssshsssssrugh rehgehtgiohe tuhg oteh ggggh hhhhhhhhh iu ghuihrguiheuigheuh gegewtuhg uiethgiuph",
-        ClientName: "Keshav Jalan",
+        ClientName: "Aryan Jain",
         DateStarted: "09 Jan 2024",
         Status: "Active",
     },
     {
         CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
-        ClientName: "Keshav Jalan",
+        ClientName: "Ritik Singhal",
         DateStarted: "09 Jan 2024",
         Status: "Active",
     },
     {
         CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
-        ClientName: "Keshav Jalan",
+        ClientName: "Bhanu Khandelwal",
         DateStarted: "09 Jan 2024",
         Status: "Active",
     },]
+    const router = useRouter();
+    const [searchQuery, setSearchQuery] = useState<string>("");
+    const [filteredCases, setFilteredCases] = useState<CaseInterface[]>(allCasesDummy);
+
+    const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const query = e.target.value;
+        setSearchQuery(query);
+
+        // Filter cases based on search query
+        const filtered = allCasesDummy.filter(caseData =>
+            caseData.CaseName.toLowerCase().includes(query.toLowerCase()) ||
+            caseData.ClientName.toLowerCase().includes(query.toLowerCase())
+        );
+        setFilteredCases(filtered);
+    };
     function AddCase() {
         //Add Cases Function
         router.push("/addCase");
@@ -104,20 +116,20 @@ export default function allCases() {
                 <div className={styles.mainContent}>
                     <div className={styles.actions}>
                         <div className={styles.searchWrapper}>
-                            <input type="text" placeholder="Search"></input>
+                            <input type="text" placeholder="Search" value={searchQuery} onChange={handleSearchInputChange}/>
                         </div>
                         <div className={styles.filterSort}>
                             {/* filters and Sort are yet to be decided */}
                             <select className={styles.filter}>
                                 <option>
-                                    Filter 1
+                                    Active
                                 </option>
                                 <option>
-                                    Filter 2
+                                    Archived
                                 </option>
                             </select>
                             <select className={styles.sort}>
-                                <option>TEST1</option>
+                                <option>Date</option>
                                 <option>TEST2</option>
                             </select>
                         </div>
@@ -130,7 +142,7 @@ export default function allCases() {
                             <p className={styles.date}>Date Started</p>
                         </div>
                         <div className={styles.casesList}>
-                            {allCasesDummy?.map((caseData: CaseInterface, index: number) => (
+                            {filteredCases?.map((caseData: CaseInterface, index: number) => (
                                 <li>
                                     <CaseRow caseData={caseData}></CaseRow>
                                 </li>

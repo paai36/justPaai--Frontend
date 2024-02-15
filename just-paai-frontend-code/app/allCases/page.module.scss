@@ -6,6 +6,7 @@ div.caseRow {
 	align-items: center;
 	padding: 0 0.5vw;
 	min-height: 7vh;
+	position: relative;
 
 	input {
 		position: relative;
@@ -19,18 +20,21 @@ div.caseRow {
 	}
 
 	p.caseName {
-		position: relative;
-		left: 0%;
+		position: absolute;
+		top: 20%;
+		left: 2.5%;
 		max-width: 31%;
-		text-wrap: wrap;
-		line-height: 0.9rem;
 		font-size: 0.9rem;
+		text-overflow: ellipsis;
+		display: -webkit-box;
 		overflow: hidden;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
 	}
 
 	p.clientName {
-		position: sticky;
-		top: 0;
+		position: absolute;
+		top: 40%;
 		left: 40%;
 		font-size: 0.9rem;
 		max-width: 10%;
@@ -39,32 +43,32 @@ div.caseRow {
 	}
 
 	p.statusArch {
-		position: sticky;
-		top: 0;
+		position: absolute;
+		top: 20%;
 		left: 57.5%;
 		font-size: 0.9rem;
-		text-wrap: wrap;
 		line-height: 0.9rem;
 		padding: 1vh 0.5vw;
 		border-radius: 30px;
 		background-color: $semantic_secondary;
 		color: $white;
-		min-width: 4%;
+		// min-width: 4%;
+		height: 2.5vh;
 		text-align: center;
 	}
 
 	p.statusActive {
-		position: sticky;
-		top: 0;
+		position: absolute;
+		top: 20%;
 		left: 57.5%;
 		font-size: 0.9rem;
-		text-wrap: wrap;
 		line-height: 0.9rem;
 		padding: 1vh 0.5vw;
 		border-radius: 30px;
 		background-color: $semantic_success;
 		color: $white;
-		min-width: 4%;
+		// min-width: 4%;
+		height: 2.5vh;
 		text-align: center;
 	}
 
@@ -154,30 +158,31 @@ div.main {
 				background-color: $gray80;
 				border-top-left-radius: 6px;
 				border-top-right-radius: 6px;
-
+				position: relative;
+				min-height: 2.5vh;
 				p {
 					margin: 0;
 					padding: 0;
 				}
 
 				p.name {
-					position: relative;
+					position: absolute;
 					left: 3%;
 				}
 
 				p.client {
-					position: relative;
-					left: 33%;
+					position: absolute;
+					left: 40%;
 				}
 
 				p.status {
-					position: relative;
-					left: 45%;
+					position: absolute;
+					left: 58%;
 				}
 
 				p.date {
-					position: relative;
-					left: 60%;
+					position: absolute;
+					left: 76%;
 				}
 			}
 
