@@ -1,15 +1,13 @@
 "use client";
-
-import { Inter } from "next/font/google";
 import "./globals.scss";
 import { useSidebarStore } from "../store";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { signOut } from "../config/firebaseApp.ts";
+import { signOut } from "../config/firebaseApp";
+import { Manrope } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
-
+const manrope = Manrope({ subsets: ['latin'] });
 export default function RootLayout({ children }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -42,7 +40,7 @@ export default function RootLayout({ children }) {
   ];
   const selectedCase = {
     name: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
-    dropdown: ["DashBoard", "Research", "Invoices", "Legal Notices"],
+    dropdown: ["Dashboard", "Research", "Invoices", "Legal Notices"],
   };
   useEffect(() => {
     setShowSidebar(pathname !== "/" && pathname !== "/Landing");
@@ -52,7 +50,7 @@ export default function RootLayout({ children }) {
       <title>Just-Paai</title>
       <body>
         <div id="main_container">
-          <main>
+          <main className={manrope.className}>
             {showSidebar ? (
               <nav className="sidebar">
                 <img src="/assets/logo2.svg"></img>
@@ -96,9 +94,9 @@ export default function RootLayout({ children }) {
                         style={
                           openDropDown
                             ? {
-                                transform: "rotate(180deg)",
-                                transition: "transform 0.4s ease",
-                              }
+                              transform: "rotate(180deg)",
+                              transition: "transform 0.4s ease",
+                            }
                             : undefined
                         }
                       ></Image>

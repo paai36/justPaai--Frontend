@@ -27,7 +27,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "app/allCases", "app/page.jsx", "app/layout.jsx", "config/firebaseApp.ts"  ],
+, "app/allCases", "app/page.tsx", "app/layout.tsx", "config/firebaseApp.ts"  ],
   "exclude": [
     "node_modules"
   ]

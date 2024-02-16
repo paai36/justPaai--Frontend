@@ -7,6 +7,7 @@ div.caseRow {
 	padding: 0 0.5vw;
 	min-height: 7vh;
 	position: relative;
+	
 
 	input {
 		position: relative;
@@ -116,6 +117,9 @@ div.main {
 					border: 1px solid $border;
 					padding: 1vh 1vw;
 					border-radius: 6px;
+					&:focus {
+						outline: none;
+					}
 				}
 			}
 

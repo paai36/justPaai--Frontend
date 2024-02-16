@@ -84,29 +84,49 @@ export default function allCases() {
     },]
     const router = useRouter();
     const [searchQuery, setSearchQuery] = useState<string>("");
-    const [filteredCases, setFilteredCases] = useState<CaseInterface[]>(allCasesDummy);
+    const [filterType, setFilterType] = useState<string>("All");
+    const [sortedCases, setSortedCases] = useState<CaseInterface[]>(allCasesDummy);
+
+    useEffect(() => {
+        filterAndSortCases();
+    }, [searchQuery, filterType]);
 
     const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const query = e.target.value;
-        setSearchQuery(query);
-
-        // Filter cases based on search query
-        const filtered = allCasesDummy.filter(caseData =>
-            caseData.CaseName.toLowerCase().includes(query.toLowerCase()) ||
-            caseData.ClientName.toLowerCase().includes(query.toLowerCase())
-        );
-        setFilteredCases(filtered);
+        setSearchQuery(e.target.value);
     };
+
+    const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setFilterType(e.target.value);
+    };
+
+    const filterAndSortCases = () => {
+        let filteredCases = allCasesDummy.filter(caseData =>
+            caseData.CaseName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            caseData.ClientName.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+
+        if (filterType === "Active") {
+            filteredCases = filteredCases.filter(caseData => caseData.Status === "Active");
+        } else if (filterType === "Archived") {
+            filteredCases = filteredCases.filter(caseData => caseData.Status === "Archived");
+        }
+
+        filteredCases.sort((a, b) => new Date(b.DateStarted).getTime() - new Date(a.DateStarted).getTime());
+        setSortedCases(filteredCases);
+    };
+
     function AddCase() {
-        //Add Cases Function
         router.push("/addCase");
     }
+
     function Delete() {
-        //Delete Case Function
+        // Implement delete case functionality
     }
+
     function Archive() {
-        //Archive Case Function
+        // Implement archive case functionality
     }
+
     return (
         <>
             <div className={styles.main}>
@@ -116,17 +136,14 @@ export default function allCases() {
                 <div className={styles.mainContent}>
                     <div className={styles.actions}>
                         <div className={styles.searchWrapper}>
-                            <input type="text" placeholder="Search" value={searchQuery} onChange={handleSearchInputChange}/>
+                            <input type="text" placeholder="Search" value={searchQuery} onChange={handleSearchInputChange} />
                         </div>
                         <div className={styles.filterSort}>
                             {/* filters and Sort are yet to be decided */}
-                            <select className={styles.filter}>
-                                <option>
-                                    Active
-                                </option>
-                                <option>
-                                    Archived
-                                </option>
+                            <select className={styles.filter} value={filterType} onChange={handleFilterChange}>
+                                <option value="All">All</option>
+                                <option value="Active">Active</option>
+                                <option value="Archived">Archived</option>
                             </select>
                             <select className={styles.sort}>
                                 <option>Date</option>
@@ -142,7 +159,7 @@ export default function allCases() {
                             <p className={styles.date}>Date Started</p>
                         </div>
                         <div className={styles.casesList}>
-                            {filteredCases?.map((caseData: CaseInterface, index: number) => (
+                            {sortedCases?.map((caseData: CaseInterface, index: number) => (
                                 <li>
                                     <CaseRow caseData={caseData}></CaseRow>
                                 </li>

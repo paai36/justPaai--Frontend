@@ -113,24 +113,33 @@ export default function caseDashboard() {
                 <div className={styles.notes}>
                     <div className={styles.notesHeading}>
                         <div className={styles.headingText}>
-                            Recent Notes <img src="toprightarr.svg" alt="" width={20} height={20} />
+                            Recent Notes <img src="/toprightarr.svg" alt="" width={20} height={20} />
                         </div>
                         <div className={styles.newNote}>
                             New Note +
                         </div>
                     </div>
                     <ul>
-                        {caseDetails?.Notes.map((noteObj, index) => (
-                            <div className={styles.note} key={index}>
-                                <div className={styles.left}>
-                                    <h3>{noteObj.title}</h3>
-                                    <p> {noteObj.note}</p>
-                                </div>
-                                <div className={styles.right}>
-                                    {noteObj?.noteDate} <img src="rightcrr.svg" alt=">" height={22} width={22} />
-                                </div>
+                        {caseDetails?.Notes.length === 0 ? (
+                            <div className={styles.emptystate}>
+                                <img src="/caseDashboard/emptystate.svg" alt=""></img>
+                                <p>Oops! You don't have any notes</p>
+                                <button>Create New Note +</button>
                             </div>
-                        ))}
+                        ) : (
+                            <>
+                                {caseDetails?.Notes.map((noteObj, index) => (
+                                    <div className={styles.note} key={index}>
+                                        <div className={styles.left}>
+                                            <h3>{noteObj.title}</h3>
+                                            <p> {noteObj.note}</p>
+                                        </div>
+                                        <div className={styles.right}>
+                                            {noteObj?.noteDate} <img src="/rightCrr.svg" alt=">" height={22} width={22} />
+                                        </div>
+                                    </div>
+                                ))}</>
+                        )}
                     </ul>
                 </div>
                 <div className={styles.bottom}>

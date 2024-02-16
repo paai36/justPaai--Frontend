@@ -1,0 +1,142 @@
+@import "../imports.module.scss";
+
+main.mainContent {
+    height: 98vh;
+    position: relative;
+    background-color: $gray0;
+    display: flex;
+    flex-direction: column;
+    padding: 1vh 5%;
+    row-gap: 2vh;
+    width: 90%;
+    h2 {
+        margin: 0;
+        font-size: 2.1rem;
+    }
+    p.back {
+        margin: 0;
+        color: $blue60;
+    }
+    section {
+        display: flex;
+        flex-direction: column;
+        row-gap: 2vh;
+        div.main {
+            display: flex;
+            flex-direction: column;
+            row-gap: 1vh;
+            background-color: $white;
+            border-radius: 10px;
+            border: 1px solid $gray60;
+            width: 70vw;
+            padding: 2vh 2vw;
+            img {
+                border-radius: 100px;
+            }
+            h2 {
+                margin: 0;
+                font-size: 1.8rem;
+            }
+            p {
+                margin: 0;
+                color: $gray60;
+            }
+        }
+        div.about {
+            display: flex;
+            flex-direction: column;
+            row-gap: 1vh;
+            label.aboutyou {
+                color: $gray80;
+                font-weight: 600;
+            }
+            div.aboutText {
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 0.9rem;
+                color: $gray50;
+            }
+        }
+        div.contact {
+            display: flex;
+            flex-direction: column;
+            row-gap: 2vh;
+            label {
+                color: $gray80;
+                font-weight: 600;
+            }
+            div.mailPhone{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                div.email {
+                    display: flex;
+                    flex-direction: column;
+                    label {
+                        color: $gray50;
+                        font-size: 0.8rem;
+                        font-weight: 500;
+                    }
+                    div{
+                        color: $gray60;
+                        font-size: 1.2rem;
+                    }
+                }
+                div.phone {
+                    display: flex;
+                    flex-direction: column;
+                    label {
+                        color: $gray50;
+                        font-size: 0.8rem;
+                        font-weight: 500;
+                    }
+                    div{
+                        color: $gray60;
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+            div.address {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start
+                label {
+                    color: $gray50;
+                    font-size: 0.8rem;
+                    font-weight: 500;
+                }
+                div{
+                    color: $gray60;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+    div.bottom {
+        display: flex;
+        align-self: flex-end;
+        width: 100%;
+        justify-content: flex-end;
+        position: absolute;
+        bottom: 5%;
+        column-gap: 2vw;
+        button {
+            padding: 2vh 2vw;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button.vcard{
+            background-color: $blue10;
+            color: $blue60;
+            border-color: linear-gradient(#E86427 , #F5C518 , #1195D6);
+        }
+        button.edit {
+            background-color: $blue60;
+            border: none;
+            color: $white;
+        }
+    }
+}

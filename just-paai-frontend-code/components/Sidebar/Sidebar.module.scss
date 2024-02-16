@@ -8,7 +8,9 @@ div.sidebar {
     padding: 3vh 1vw;
     border-radius: 10px;
     height: 90vh;
+    width: 16vw;
     background-color: $white;
+    
     div.clientCard {
         background-color: $gray10;
         display: flex;
@@ -28,15 +30,15 @@ div.sidebar {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start; 
-                padding: 2vh;
+                padding-top: 2vh;
+                padding-bottom: 2vh;
                 row-gap: 1vh;
                 p {
                     color: $gray60;
                     margin: 0;
-
                 }
                 h3 {
-                    font-size: 1.3rem;
+                    font-size: 1rem;
                     margin: 0;
                 }
             }
@@ -114,7 +116,7 @@ div.sidebar {
 			width: 100%;
 			background-color: $blue60;
 			border: none;
-			padding: 2vh 3vw;
+			padding: 2vh 1.5vw;
 			border-radius: 12px;
 			cursor: pointer;
 			align-self: flex-end;

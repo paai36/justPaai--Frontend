@@ -5,6 +5,6 @@ interface sidebarStoreInterface {
     setShowSidebar: (newState : boolean) => void;
 }
 export const useSidebarStore = create<sidebarStoreInterface>((set) => ({
-  showSidebar: false,
+  showSidebar: true,
   setShowSidebar: (newState : boolean) => set(() => ({ showSidebar: newState })),
 }));

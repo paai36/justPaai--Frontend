@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import logo from "../public/assets/logo.svg";
 import Link from "next/link";
-import { signIn } from "../config/firebaseApp.ts";
+import { signIn } from "../config/firebaseApp";
 import { useRouter } from "next/navigation";
 export default function Home() {
   const router = useRouter();
