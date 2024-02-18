@@ -6,198 +6,199 @@
 //   box-sizing: border-box;
 // }
 @mixin disappear-scrollbar {
-  &::-webkit-scrollbar {
-    display: none;
-  }
+	&::-webkit-scrollbar {
+		display: none;
+	}
 
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
 
 body {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 main {
-  width: 100vw;
-  height: 100vh;
-  padding: 0;
-  margin: 0;
-  background-color: $background;
-  display: grid;
-  grid-template-columns: 2fr 9fr;
-  position: fixed;
-  overflow: hidden;
-  background: #eee;
-  
-  @include disappear-scrollbar;
+	width: 100vw;
+	height: 100vh;
+	padding: 0;
+	margin: 0;
+	background-color: $background;
+	display: grid;
+	grid-template-columns: 2fr 9fr;
+	position: fixed;
+	overflow: hidden;
+	background: #eee;
 
-  nav.sidebar {
-    display: flex;
-    flex-direction: column;
-    row-gap: 3vh;
-    padding-bottom: 0;
-    position: relative;
-    width: 14vw;
-    border-right: 1px solid #c4c4c4;
-    padding: 2vh 2vw 2vh 2vw;
-    justify-content: flex-start;
-    align-items: flex-start;
-    max-width: min-content;
-    background: #e7e7e7;
-    
-    overflow-x:hidden;
-    div.yourspace {
-      display: flex;
-      padding: 0;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: start;
-      p.routeHead {
-        color: #08548a;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        margin: 0;
-      }
-      ul.routes {
-        margin: 1vh 0 0 0;
-        display: flex;
-        flex-direction: column;
-        row-gap: 1vh;
-        padding: 0;
-        li.route {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          column-gap: 1vw;
-          list-style: none;
-          padding: 1.5vh 1vw;
-          width: 100%;
-          border-radius: 12px;
-          cursor: pointer;
-          font-size: 0.9rem;
-          font-weight: 500;
-        }
-        li.selected {
-          background-color: $blue60;
-          // font-size: 1.2rem;
-          color: $white;
-          transform: scale(1.05);
-          transition: transform 0.3s ease;
-        }
-      }
-    }
-    div.selectedCase {
-      display: flex;
-      padding: 0;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: start;
-      row-gap: 2vh;
-      max-width: fit-content;
-      p.caseHead {
-        color: #08548a;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        margin: 0;
-      }
-      div.caseWrapper {
-        background: white;
-        border-radius: 12px;
-        padding: 1vh 1vw;
-        div.casename {
-          display: flex;
-          flex-direction: row;
-          cursor: pointer;
-          overflow: hidden;
-          p {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            font-weight: 500;
-            text-wrap: nowrap;
-            max-width: 12vw;
-            text-overflow: ellipsis;
-            font-size: 1rem;
-          }
-        }
-        ul.dropDown {
-          margin: 1vh 0 0 0;
-          display: flex;
-          flex-direction: column;
-          padding: 0;
-          li {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            column-gap: 1vw;
-            list-style: none;
-            padding: 1vh 1vw;
-            padding-left: 0;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-          }
-        }
-      }
-    }
-    div.buttons {
-      display: flex;
-      width: 100%;
-      flex-direction: column;
-      row-gap: 0.5vh;
-      margin-top: auto;
-      button.reachout {
-        background-color: #e4f0f5;
-        color: #1195d6;
-        border: 1px solid #1195d6;
-        border-radius: 12px;
-        padding: 1.5vh 1vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        column-gap: 0.5vw;
-        cursor: pointer;
-        font-weight: 600;
-      }
-      div {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        button {
-          width: 48%;
-        }
-        button.report {
-          color: #ed4337;
-          border: 1px solid #ed4337;
-          border-radius: 12px;
-          padding: 1.5vh 0 ;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          column-gap: 0.5vw;
-          cursor: pointer;
-          font-weight: 500;
-        }
-        button.logout {
-          background-color: #ed4337;
-          color: white;
-          border: none;
-          border-radius: 12px;
-          padding: 1.5vh 0.25vw;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          column-gap: 0.5vw;
-          cursor: pointer;
-          font-weight: 500;
-        }
-      }
-    }
-  }
+	@include disappear-scrollbar;
+
+	nav.sidebar {
+		display: flex;
+		flex-direction: column;
+		row-gap: 3vh;
+		padding-bottom: 0;
+		position: relative;
+		width: calc(100% - 4vw);
+		border-right: 1px solid #c4c4c4;
+		padding: 2vh 2vw 2vh 2vw;
+		justify-content: flex-start;
+		align-items: flex-start;
+		max-width: min-content;
+		background: #e7e7e7;
+		@include disappear-scrollbar;
+
+		overflow-x: hidden;
+		div.yourspace {
+			display: flex;
+			padding: 0;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: start;
+			p.routeHead {
+				color: #08548a;
+				font-size: 1rem;
+				font-style: normal;
+				font-weight: 500;
+				line-height: normal;
+				margin: 0;
+			}
+			ul.routes {
+				margin: 1vh 0 0 0;
+				display: flex;
+				flex-direction: column;
+				row-gap: 1vh;
+				padding: 0;
+				li.route {
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					column-gap: 1vw;
+					list-style: none;
+					padding: 1.5vh 1vw;
+					width: 100%;
+					border-radius: 12px;
+					cursor: pointer;
+					font-size: 0.9rem;
+					font-weight: 500;
+				}
+				li.selected {
+					background-color: $blue60;
+					// font-size: 1.2rem;
+					color: $white;
+					transform: scale(1.05);
+					transition: transform 0.3s ease;
+				}
+			}
+		}
+		div.selectedCase {
+			display: flex;
+			padding: 0;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: start;
+			row-gap: 2vh;
+			max-width: fit-content;
+			p.caseHead {
+				color: #08548a;
+				font-size: 1rem;
+				font-style: normal;
+				font-weight: 500;
+				line-height: normal;
+				margin: 0;
+			}
+			div.caseWrapper {
+				background: white;
+				border-radius: 12px;
+				padding: 1vh 1vw;
+				div.casename {
+					display: flex;
+					flex-direction: row;
+					cursor: pointer;
+					overflow: hidden;
+					p {
+						margin: 0;
+						padding: 0;
+						overflow: hidden;
+						font-weight: 500;
+						text-wrap: nowrap;
+						max-width: 12vw;
+						text-overflow: ellipsis;
+						font-size: 1rem;
+					}
+				}
+				ul.dropDown {
+					margin: 1vh 0 0 0;
+					display: flex;
+					flex-direction: column;
+					padding: 0;
+					li {
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+						column-gap: 1vw;
+						list-style: none;
+						padding: 1vh 1vw;
+						padding-left: 0;
+						border-radius: 12px;
+						cursor: pointer;
+						font-size: 1rem;
+						font-weight: 500;
+					}
+				}
+			}
+		}
+		div.buttons {
+			display: flex;
+			width: 100%;
+			flex-direction: column;
+			row-gap: 0.5vh;
+			margin-top: auto;
+			button.reachout {
+				background-color: #e4f0f5;
+				color: #1195d6;
+				border: 1px solid #1195d6;
+				border-radius: 12px;
+				padding: 1.5vh 1vw;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				column-gap: 0.5vw;
+				cursor: pointer;
+				font-weight: 600;
+			}
+			div {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				button {
+					width: 48%;
+				}
+				button.report {
+					color: #ed4337;
+					border: 1px solid #ed4337;
+					border-radius: 12px;
+					padding: 1.5vh 0;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					column-gap: 0.5vw;
+					cursor: pointer;
+					font-weight: 500;
+				}
+				button.logout {
+					background-color: #ed4337;
+					color: white;
+					border: none;
+					border-radius: 12px;
+					padding: 1.5vh 0.25vw;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					column-gap: 0.5vw;
+					cursor: pointer;
+					font-weight: 500;
+				}
+			}
+		}
+	}
 }

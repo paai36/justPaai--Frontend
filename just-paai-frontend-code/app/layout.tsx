@@ -6,8 +6,16 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { signOut } from "../config/firebaseApp";
 import { Manrope } from "next/font/google";
+import ReportModal from "../components/ReportModal";
+import ReachOut from "../components/ReachOut";
 
 const manrope = Manrope({ subsets: ['latin'] });
+
+enum PageState {
+  Default,
+  Report,
+  Reachout,
+}
 export default function RootLayout({ children }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -20,6 +28,9 @@ export default function RootLayout({ children }) {
     router.push("/");
   };
   const [openDropDown, setOpenDropDown] = useState(true);
+
+  const [pageState, setPageState] = useState<PageState>(PageState.Default);
+
   const routes = [
     {
       name: "Dashboard",
@@ -43,7 +54,7 @@ export default function RootLayout({ children }) {
     dropdown: ["Dashboard", "Research", "Invoices", "Legal Notices"],
   };
   useEffect(() => {
-    setShowSidebar(pathname !== "/" && pathname !== "/Landing");
+    setShowSidebar(pathname !== "/" && pathname !== "/Landing" && pathname !== "/onboarding");
   }, [pathname]);
   return (
     <html lang="en">
@@ -111,12 +122,12 @@ export default function RootLayout({ children }) {
                   </div>
                 </div>
                 <div className="buttons">
-                  <button className="reachout">
+                  <button className="reachout" onClick={() => { setPageState(PageState.Reachout) }}>
                     <img src="/textbox.svg"></img>
                     Reach Out To Us
                   </button>
                   <div className="reportLogout">
-                    <button className="report">
+                    <button className="report" onClick={() => { setPageState(PageState.Report) }}>
                       Report Error <img src="/report.svg"></img>
                     </button>
                     <button className="logout" onClick={handleLogOut}>
@@ -130,6 +141,8 @@ export default function RootLayout({ children }) {
             )}
 
             {children}
+            <ReportModal onClose={() => { setPageState(PageState.Default) }} showModal={pageState === PageState.Report} />
+            <ReachOut onClose={() => { setPageState(PageState.Default) }} showModal={pageState === PageState.Reachout} />
           </main>
         </div>
       </body>

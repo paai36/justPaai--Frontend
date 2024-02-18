@@ -3,4 +3,97 @@
 main.mainContent {
     height: 100vh;
     position: relative;
+    background-color: $white;
+    // background-image: url('/public/Home.svg');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h2 {
+        margin: 0;
+        padding: 0;
+    }
+    p {
+        margin: 0;
+        padding: 0;
+    }
+    img.backImg {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 0;
+    }
+    section {
+        z-index: 1;
+        max-width: 75vw;
+        display: flex;
+        flex-direction: column;
+        row-gap: 2vh;
+        justify-content: flex-start;
+        div.back {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            cursor: pointer;
+            column-gap: 0.5vw;
+            color: $gray50;
+            img {
+                width: 1.2vw;
+            }
+        }
+        div.main {
+            max-width: 50%;
+            div.head {
+                h2 {
+                    font-size: 2.2rem;
+                    span {
+                        color: $blue60;
+                    }
+                }
+                p {
+                    font-size: 0.8rem;
+                    color: $gray60;
+                }
+            }
+            div.form {
+                h3{}
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 1.5vh;
+                    div {
+                        display: flex;
+                        flex-direction: column;
+                        row-gap: 0.5vh;
+                        label {
+                            font-size: 0.8rem;
+                        }
+                        input {
+                            width: 95%;
+                            padding: 1.5vh 1vw;
+                            border-radius: 4px;
+                            border: 1.1px solid $border;
+                            &:focus {
+                                outline: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        button {
+            cursor: pointer !important;
+            justify-content: flex-end;
+            align-self: flex-end;
+            margin-left:auto ;
+            display: flex;
+            align-items: center;
+            background-color: $gray90;
+            color: $white;
+            padding: 1vh 2vw;
+            border-radius: 8px;
+            column-gap: 1vw;
+            border: none;
+            z-index: 2;
+        }
+    }
 }

@@ -1,0 +1,82 @@
+@import "../../app/imports.module";
+
+div.wrapper {
+	background-color: $gray0;
+	padding: 2vh 2vw;
+	border-radius: 12px;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	min-width: 35vw;
+    row-gap: 2vh;
+	img.close {
+		justify-self: flex-end;
+		position: absolute;
+		right: 3%;
+		top: 2%;
+        cursor: pointer;
+	}
+	h2 {
+        align-self: center;
+        margin-bottom: 0;
+		span {
+			color: $semantic_danger;
+		}
+	}
+	div.main {
+		display: flex;
+		flex-direction: column;
+		row-gap: 1.5vh;
+		div {
+			display: flex;
+			flex-direction: column;
+			row-gap: 0.5vh;
+            input {
+                padding: 1vh 0.5vw;
+                border-radius: 8px;
+                border: 1px solid $border;
+                width: calc(100% - 1vw);
+                &:focus {
+                    outline: none;
+                }
+            }
+		}
+		div.error {
+			textarea {
+				width: calc(100% - 1vw) !important;
+				min-height: 8vh;
+				max-height: 10vh;
+                padding: 1vh 0.5vw;
+                border: 1px solid $border;
+                border-radius: 8px;
+                @include disappear-scrollbar;
+                &:focus {
+                    outline: none;
+                }
+			}
+		}
+	}
+	div.btns {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		button {
+			padding: 1.5vh 1vw;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+		button.cancel {
+            color: $blue60;
+            border: 1px solid $blue60;
+            background-color: transparent;
+		}
+        button.report {
+            background-color: $semantic_danger;
+            color: $white;
+            display: flex;
+            align-items: center;
+            column-gap: 0.5vw;
+            border: none;
+        }
+	}
+}
