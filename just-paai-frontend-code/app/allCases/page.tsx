@@ -116,7 +116,7 @@ export default function allCases() {
     };
 
     function AddCase() {
-        router.push("/addCase");
+        router.push("/newCase");
     }
 
     function Delete() {

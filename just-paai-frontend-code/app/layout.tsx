@@ -58,7 +58,7 @@ export default function RootLayout({ children }) {
   }, [pathname]);
   return (
     <html lang="en">
-      <title>Just-Paai</title>
+      <title>Justi-Paai</title>
       <body>
         <div id="main_container">
           <main className={manrope.className}>
