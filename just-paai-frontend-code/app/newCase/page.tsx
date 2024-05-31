@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import styles from "./page.module.scss";
 import { CaseInterface } from "../../interfaces";
 import { useRouter } from "next/navigation";
-import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+// import { Editor } from "react-draft-wysiwyg";
+// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
 
@@ -151,7 +151,7 @@ export default function newCase() {
                         </div>
                     </div>
                     <div className={styles.caseSummary}>
-                        <Editor
+                        {/* <Editor
                             editorState={editorState}
                             toolbarClassName="toolbarClassName"
                             wrapperClassName="wrapperClassName"
@@ -164,7 +164,7 @@ export default function newCase() {
                             }}
                             placeholder='Enter Your Case Summary here (Markdown Supported)'
                             onEditorStateChange={onEditorStateChange}
-                        />
+                        /> */}
                     </div>
                     <div className={styles.btns}>
                         <button className={styles.back}>
