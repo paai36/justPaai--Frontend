@@ -1,0 +1,134 @@
+@import "../imports.module.scss";
+
+
+div.caseRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    p {
+        margin: 0;
+        padding: 0;
+    }
+    div.left {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5vh;
+        p.caseName {
+            color: $gray80;
+            font-size: 1rem;
+        }
+        p.clientName {
+            color: $gray60;
+            font-size: 0.8rem;
+            span {
+                color: $gray50;
+            }
+        }
+    }
+    div.right {
+        p {
+            text-overflow: clip;
+            text-wrap:nowrap;
+            cursor: pointer;
+        }
+    }
+}
+section.main {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 2vh 2vw;
+	background-color: $gray0;
+	column-gap: 2vw;
+    p{
+        padding: 0;
+        margin: 0;
+    }
+    div.mainContent {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 2vh;
+        h1{}
+        div.one {
+            display: flex;
+            flex-direction: column;
+            background-color: $white;
+            padding: 2vh 1vw;
+            row-gap: 1.5vh;
+            div.head {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                div.subheading {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    column-gap: 0.5vw;
+                }
+                button {
+                    background-color: $blue20;
+                    border: none;
+                    padding: 1vh 1vw;
+                    cursor: pointer;
+                    color: $blue70;
+                    border-radius: 2px;
+                }
+            }
+            div.caseList {
+                display: flex;
+                flex-direction: column;
+                max-height: 20vh;
+                overflow-y: scroll;
+                @include disappear-scrollbar;
+                row-gap: 2vh;
+                li {
+                    list-style: none;
+                }
+            }
+        }
+        div.two {
+            display: flex;
+            flex-direction: column;
+            padding: 4vh 4vw;
+            align-items: center;
+            justify-content: center;
+            row-gap: 3vh;
+            background: linear-gradient(45deg, rgba(232, 100, 39, 0.32), rgba(245, 197, 24, 0.3), rgba(17, 149, 214, 0.2));
+            border-radius: 8px;
+            border: 1px solid linear-gradient(45deg, rgba(232, 100, 39, 1), rgba(245, 197, 24, 1), rgba(17, 149, 214, 1));
+            h3 {
+                margin: 0;
+            }
+            div.searchBox {
+                display: flex;
+                column-gap: 10%;
+                background-color: $white;
+                padding: 1.5vh 2vw;
+                padding-left: 1vw;
+                border-radius: 2px;
+                width: 90%;
+                input {
+                    border: none;
+                    outline: none;
+                    width: 90%;
+                    &:focus {
+                        outline: none;
+                    }
+                }
+                button{
+                    border: none;
+                    color: $white;
+                    background-color: $blue60;
+                    padding: 0.75vh 1.2vw;
+                    border-radius: 2px;
+                    cursor: pointer;
+                    justify-self: flex-end;
+                    align-self: flex-end;
+                }
+            }
+        }
+    }
+}
