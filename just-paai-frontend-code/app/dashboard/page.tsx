@@ -5,7 +5,7 @@ import { CaseInterface } from "../../interfaces";
 import { useRouter } from "next/navigation";
 import Sidebar from "../../components/Sidebar";
 
-export function CaseRowList({ caseData }: { caseData: CaseInterface }) {
+function CaseRowList({ caseData }: { caseData: CaseInterface }) {
     return (
         <div className={styles.caseRow}>
             <div className={styles.left}>
