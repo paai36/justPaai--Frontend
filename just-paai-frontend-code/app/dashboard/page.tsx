@@ -4,6 +4,14 @@ import styles from "./page.module.scss";
 import { CaseInterface, noticesInterface, invoicesInterface } from "../../interfaces";
 import { useRouter } from "next/navigation";
 import Sidebar from "../../components/Sidebar";
+import ReachOut from "../../components/ReachOut";
+import ReqFeature from "../../components/ReqFeature";
+
+enum PageState {
+    Default,
+    ReqFeature,
+    Reachout,
+  }
 
 function CaseRowList({ caseData }: { caseData: CaseInterface }) {
     return (
@@ -43,9 +51,18 @@ function InvoiceRowList({ invoice }: { invoice: invoicesInterface }) {
 
 
 export default function dashboard() {
+  const [pageState, setPageState] = useState<PageState>(PageState.Default);
+
 
     const handleSearch = () => {
         //handle Search FUNCTION
+    }
+    const handlereachOut = () => {
+        setPageState(PageState.Reachout) 
+    }
+    const handlereqFeature = () => {
+        setPageState(PageState.ReqFeature)
+
     }
 
     const Notices: noticesInterface[] = [
@@ -150,90 +167,94 @@ export default function dashboard() {
     },]
     const router = useRouter();
     return (
-        <section className={styles.main}>
-            <div className={styles.mainContent}>
-                <h1>Dashboard</h1>
-                <div className={styles.one}>
-                    <div className={styles.head}>
-                        <div className={styles.subheading}>
-                            <p>Recent Cases</p>
-                            <img src="toprightarr.svg" width={16} height={16} alt=">"></img>
-                        </div>
-                        <button onClick={() => router.push("/newCase")}>
-                            New Case  +
-                        </button>
-                    </div>
-                    <div className={styles.caseList}>
-                        {allCasesDummy?.map((caseData: CaseInterface, index: number) => (
-                            <li key={index}>
-                                <CaseRowList caseData={caseData} />
-                            </li>
-                        ))}
-                    </div>
-                </div>
-                <div className={styles.two}>
-                    <h3>Search From Millions Of Cases In Our Database.</h3>
-                    <form className={styles.searchBox} onSubmit={() => handleSearch()}>
-                        <input placeholder="Start Typing" />
-                        <button onClick={() => handleSearch()}>Search</button>
-                    </form>
-                </div>
-                <div className={styles.three}>
-                    <div className={styles.notices}>
+        <>
+            <section className={styles.main}>
+                <div className={styles.mainContent}>
+                    <h1>Dashboard</h1>
+                    <div className={styles.one}>
                         <div className={styles.head}>
                             <div className={styles.subheading}>
-                                <p>Recent Notices</p>
+                                <p>Recent Cases</p>
                                 <img src="toprightarr.svg" width={16} height={16} alt=">"></img>
                             </div>
-                            <button>
-                                New +
+                            <button onClick={() => router.push("/newCase")}>
+                                New Case  +
                             </button>
                         </div>
-                        <div className={styles.noticesList}>
-                            {Notices?.map((notice: noticesInterface, index: number) => (
-                                <>
-                                    <li key={index}>
-                                        <NoticeRowList notice={notice} />
-                                    </li>
-                                </>
+                        <div className={styles.caseList}>
+                            {allCasesDummy?.map((caseData: CaseInterface, index: number) => (
+                                <li key={index}>
+                                    <CaseRowList caseData={caseData} />
+                                </li>
                             ))}
                         </div>
                     </div>
-                    <div className={styles.invoices}>
-                        <div className={styles.head}>
-                            <div className={styles.subheading}>
-                                <p>Recent Invoices</p>
-                                <img src="toprightarr.svg" width={16} height={16} alt=">"></img>
+                    <div className={styles.two}>
+                        <h3>Search From Millions Of Cases In Our Database.</h3>
+                        <form className={styles.searchBox} onSubmit={() => handleSearch()}>
+                            <input placeholder="Start Typing" />
+                            <button onClick={() => handleSearch()}>Search</button>
+                        </form>
+                    </div>
+                    <div className={styles.three}>
+                        <div className={styles.notices}>
+                            <div className={styles.head}>
+                                <div className={styles.subheading}>
+                                    <p>Recent Notices</p>
+                                    <img src="toprightarr.svg" width={16} height={16} alt=">"></img>
+                                </div>
+                                <button>
+                                    New +
+                                </button>
                             </div>
-                            <button>
-                                New +
-                            </button>
+                            <div className={styles.noticesList}>
+                                {Notices?.map((notice: noticesInterface, index: number) => (
+                                    <>
+                                        <li key={index}>
+                                            <NoticeRowList notice={notice} />
+                                        </li>
+                                    </>
+                                ))}
+                            </div>
                         </div>
-                        <div className={styles.invoicesList}>
-                            {Invoices?.map((invoice: invoicesInterface, index: number) => (
-                                <>
-                                    <li key={index}>
-                                        <InvoiceRowList invoice={invoice} />
-                                    </li>
-                                </>
-                            ))}
+                        <div className={styles.invoices}>
+                            <div className={styles.head}>
+                                <div className={styles.subheading}>
+                                    <p>Recent Invoices</p>
+                                    <img src="toprightarr.svg" width={16} height={16} alt=">"></img>
+                                </div>
+                                <button>
+                                    New +
+                                </button>
+                            </div>
+                            <div className={styles.invoicesList}>
+                                {Invoices?.map((invoice: invoicesInterface, index: number) => (
+                                    <>
+                                        <li key={index}>
+                                            <InvoiceRowList invoice={invoice} />
+                                        </li>
+                                    </>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.four}>
+                        <div className={styles.reachOut} onClick={() => handlereachOut()}>
+                            <p>Reach Out To Us</p>
+                            <img src="reachOut.svg" alt="" />
+                        </div>
+                        <div className={styles.reqFeature} onClick={() => handlereqFeature()}>
+                            <p>Request Feature</p>
+                            <img src="reqFeature.svg" alt="" />
                         </div>
                     </div>
                 </div>
-                <div className={styles.four}>
-                    <div className={styles.reachOut}>
-                        <p>Reach Out To Us</p>
-                        <img src="reachOut.svg" alt="" />
-                    </div>
-                    <div className={styles.reqFeature}>
-                        <p>Request Feature</p>
-                        <img src="reqFeature.svg" alt=""/>
-                    </div>
+                <div className={styles.SideBarWrapper}>
+                    <Sidebar />
                 </div>
-            </div>
-            <div className={styles.SideBarWrapper}>
-                <Sidebar />
-            </div>
-        </section>
+            </section>
+            <ReachOut onClose={() => { setPageState(PageState.Default) }} showModal={pageState === PageState.Reachout} />
+            <ReqFeature onClose={() => { setPageState(PageState.Default) }} showModal={pageState === PageState.ReqFeature} />
+        </>
     )
 }

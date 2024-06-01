@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react';
 import Modal from '../Modal';
-import styles from './ReachOut.module.scss';
-interface ReachoutInterface {
+import styles from './ReqFeature.module.scss';
+interface reqFeatureInterface {
     name: string;
     email: string;
     phone: string;
     message: string;
 }
 
-export default function ReachOut(
+export default function ReqFeature(
     { showModal,
         onClose, }: {
             showModal: boolean;
             onClose: Function;
         }
 ) {
-    const [reachoutDetails, setreachoutDetails] = useState<ReachoutInterface>({
+    const [reqFeatureDetails, setreqFeatureDetails] = useState<reqFeatureInterface>({
         name: '',
         email: '',
         phone: '',
@@ -23,20 +23,20 @@ export default function ReachOut(
     });
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
-        setreachoutDetails(prevState => ({
+        setreqFeatureDetails(prevState => ({
             ...prevState,
             [name]: value
         }));
     }
-    const handlereachout = () => {
-        //Handlereachout
+    const handlereqFeature = () => {
+        //HandlereqFeature
         onClose();
     }
     return (
         <Modal showModal={showModal} onClose={onClose}>
             <div className={styles.wrapper}>
                 <img className={styles.close} onClick={() => onClose()} src="/close.svg" alt='X' />
-                <h2><span>Reach Out </span>To Us</h2>
+                <h2>Request <span>Feature</span></h2>
                 <div className={styles.main}>
                     <div>
                         <label>
@@ -45,7 +45,7 @@ export default function ReachOut(
                         <input
                             placeholder="Your Name"
                             name="name"
-                            value={reachoutDetails.name}
+                            value={reqFeatureDetails.name}
                             onChange={handleInputChange}
                         />
                     </div>
@@ -56,7 +56,7 @@ export default function ReachOut(
                         <input
                             placeholder="Your Official Email"
                             name="email"
-                            value={reachoutDetails.email}
+                            value={reqFeatureDetails.email}
                             onChange={handleInputChange}
                         />
                     </div>
@@ -67,18 +67,18 @@ export default function ReachOut(
                         <input
                             placeholder="Your Phone Number"
                             name="phone"
-                            value={reachoutDetails.phone}
+                            value={reqFeatureDetails.phone}
                             onChange={handleInputChange}
                         />
                     </div>
                     <div className={styles.message}>
                         <label>
-                            Message
+                            Feature Request
                         </label>
                         <textarea
-                            placeholder="Enter Your Message"
-                            name="error"
-                            value={reachoutDetails.message}
+                            placeholder="Enter Your Desired Feature"
+                            name="feature"
+                            value={reqFeatureDetails.message}
                             onChange={handleInputChange}
                         />
                     </div>
@@ -87,7 +87,7 @@ export default function ReachOut(
                     <button className={styles.cancel} onClick={() => onClose()}>
                         Cancel
                     </button>
-                    <button className={styles.reachout} onClick={handlereachout}>
+                    <button className={styles.reqFeature} onClick={handlereqFeature}>
                         Send Message <img src='/toprightwhite.svg' />
                     </button>
                 </div>
