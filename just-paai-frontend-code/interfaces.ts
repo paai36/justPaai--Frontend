@@ -19,3 +19,12 @@ export interface userInterface {
         aadhaar: string;
     }
 }
+export interface noticesInterface {
+    title: string;
+    content: string;
+    isNew: boolean;
+}
+export interface invoicesInterface {
+    title: string;
+    content: string;
+}
