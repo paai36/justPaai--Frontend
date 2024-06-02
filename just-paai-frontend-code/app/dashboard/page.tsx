@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Sidebar from "../../components/Sidebar";
 import ReachOut from "../../components/ReachOut";
 import ReqFeature from "../../components/ReqFeature";
+import { invoiceStatus } from "../../interfaces";
 
 enum PageState {
     Default,
@@ -86,23 +87,57 @@ export default function dashboard() {
         {
             title: "Unread Invoice Title",
             content: " ng hgg ur tuhguhetug gh ethgetget ghuet ug heugh ehg etiughuetg he9gehge geg er gherh gurhugheuh gjeh gjheghjkehgje h ghie0",
+            status: invoiceStatus.paid,
+            amount: 3000,
+            date: "23 dec 2023",
+            due_date: "24dec 2023",
+            invoiceNumber: 2042,
         },
         {
             title: "Unread Invoice Title",
             content: " ng hgg ur tuhguhetug gh ethgetget ghuet ug heugh ehg etiughuetg he9gehge geg er gherh gurhugheuh gjeh gjheghjkehgje h ghie0",
+            status: invoiceStatus.paid,
+            amount: 3000,
+            date: "23 dec 2023",
+            due_date: "24dec 2023",
+            invoiceNumber: 2042,
         },
         {
             title: "Unread Invoice Title",
             content: " ng hgg ur tuhguhetug gh ethgetget ghuet ug heugh ehg etiughuetg he9gehge geg er gherh gurhugheuh gjeh gjheghjkehgje h ghie0",
+            status: invoiceStatus.paid,
+            amount: 3000,
+            date: "23 dec 2023",
+            due_date: "24dec 2023",
+            invoiceNumber: 2042,
         },
         {
             title: "Unread Invoice Title",
             content: " ng hgg ur tuhguhetug gh ethgetget ghuet ug heugh ehg etiughuetg he9gehge geg er gherh gurhugheuh gjeh gjheghjkehgje h ghie0",
+            status: invoiceStatus.paid,
+            amount: 3000,
+            date: "23 dec 2023",
+            due_date: "24dec 2023",
+            invoiceNumber: 2042,
         },
         {
             title: "Unread Invoice Title",
             content: " ng hgg ur tuhguhetug gh ethgetget ghuet ug heugh ehg etiughuetg he9gehge geg er gherh gurhugheuh gjeh gjheghjkehgje h ghie0",
-        }
+            status: invoiceStatus.paid,
+            amount: 3000,
+            date: "23 dec 2023",
+            due_date: "24dec 2023",
+            invoiceNumber: 2042,
+        },
+        {
+            title: "Unread Invoice Title",
+            content: " ng hgg ur tuhguhetug gh ethgetget ghuet ug heugh ehg etiughuetg he9gehge geg er gherh gurhugheuh gjeh gjheghjkehgje h ghie0",
+            status: invoiceStatus.paid,
+            amount: 3000,
+            date: "23 dec 2023",
+            due_date: "24dec 2023",
+            invoiceNumber: 2042,
+        },
     ]
 
     const allCasesDummy: CaseInterface[] = [{
