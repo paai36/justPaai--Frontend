@@ -2,8 +2,6 @@
 import { useState, useEffect } from "react";
 import styles from "./page.module.scss";
 import { CaseInterface } from "../../interfaces";
-import { useRouter } from "next/navigation";
-import Sidebar from "../../components/Sidebar";
 import { invoicesInterface } from "../../interfaces";
 import { invoiceStatus } from "../../interfaces";
 
