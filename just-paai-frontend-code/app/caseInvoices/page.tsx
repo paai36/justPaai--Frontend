@@ -202,7 +202,7 @@ export default function caseInvoices() {
                     <div className={styles.top}>
                         <h2 className={styles.caseName}>{caseDetails?.CaseName}</h2>
                         <p className={styles.path}>
-                            Dashboard "" Invoices
+                            Dashboard <img src="rightCrr.svg" /> Invoices
                         </p>
                     </div>
                     <div className={styles.invoicesBox}>

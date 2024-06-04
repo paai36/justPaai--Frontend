@@ -45,12 +45,12 @@ div.InvoiceRow {
 
     p.statusPending {
         position: absolute;
-        top: 20%;
-        left: 57.5%;
-        font-size: 0.9rem;
-        line-height: 0.9rem;
+        // top: 20%;
+        left: 56%;
+        // font-size: 0.9rem;
+        // line-height: 0.9rem;
         padding: 1vh 1vw;
-        border-radius: 50px;
+        border-radius: 30px;
         background-color: $semantic_secondary;
         color: $white;
         // min-width: 4%;
@@ -60,12 +60,12 @@ div.InvoiceRow {
 
     p.statusPaid {
         position: absolute;
-        top: 20%;
+        // top: 20%;
         left: 57.5%;
-        font-size: 0.9rem;
-        line-height: 0.9rem;
+        // font-size: 0.9rem;
+        // line-height: 0.9rem;
         padding: 1vh 1vw;
-        border-radius: 50px;
+        border-radius: 30px;
         background-color: $semantic_success;
         color: $white;
         // min-width: 4%;
@@ -112,7 +112,12 @@ div.main {
         overflow-y: auto;
         max-height: 96vh;
 
-        div.top {}
+        div.top {
+            p.path {
+                display: flex;
+                align-items: center;
+            }
+        }
 
         div.invoicesBox {
             background-color: $white;
