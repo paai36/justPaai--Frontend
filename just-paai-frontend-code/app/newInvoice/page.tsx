@@ -126,6 +126,7 @@ export default function newInvoice() {
         ]
     }
     const [invoiceRows, setInvoiceRows] = useState<InvoiceRow[]>([]);
+    const [status, setStatus] = useState(invoiceStatus.pending);
     const validateRows = () => {
         for (const row of invoiceRows) {
             if (!row.itemName || row.hours <= 0 || row.rate <= 0) {
