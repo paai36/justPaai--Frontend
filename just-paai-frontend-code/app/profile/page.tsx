@@ -20,6 +20,9 @@ export default function onboarding() {
             aadhaar: "khgiu hegi heiugh",
         }
     }
+    const editPage = () => {
+        window.location.href = '/editProfile';
+    }
     return (
         <main className={styles.mainContent}>
             <h2>
@@ -66,7 +69,7 @@ export default function onboarding() {
             </section>
             <div className={styles.bottom}>
                 <button className={styles.vcard}>Preview Your VCard</button>
-                <button className={styles.edit}>Edit Details</button>
+                <button className={styles.edit} onClick={editPage}>Edit Details</button>
             </div>
         </main>
     )

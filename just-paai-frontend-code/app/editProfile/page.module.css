@@ -1,0 +1,76 @@
+.pageWrapper{
+  padding-inline: 2rem;
+  padding-block: 2rem;
+  overflow-y: scroll;
+}
+
+.heading{
+    height: 8%;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.profilePic img{
+    border-radius: 50%;
+}
+.formContainer{
+    display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 1rem;
+  margin-top: 1rem;
+  /* overflow-y: scroll; */
+  /* height: 75%; */
+}
+.fieldHeading{
+    font-size: 1.25rem;
+}
+.input{
+    height: 20px;
+    font-size: 1.1rem;
+    padding-block: 0.5rem;
+    padding-inline: 0.5rem;
+}
+.fieldWrapper{
+    display: flex;
+    flex-direction: column;
+    margin-block: 0.5rem;
+}
+.emailPhoneWrapper, .qualificationsCasesWrapper{
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 1rem;
+    align-items: center;
+}
+.emailWrapper, .phoneWrapper, .qualificationsWrapper, .casesWrapper{
+    width: 50%;
+}
+/* .quillEditorWrapper {
+    margin-top: 20px;
+  }
+  
+  .quillEditor {
+    height: 300px;
+    background-color: white;
+  }
+  
+  .quill .ql-container {
+    height: 100%;
+    background-color: white !important;
+  }
+  .ql-container{
+    background-color: white !important;
+
+  }
+  .ql-editor{
+    background: white !important;
+  } */
+  .quillEditor{
+    height: 300px;
+    background-color: white;
+    
+  }
+  .buttonsWrapper{
+    margin-top: 2rem;
+  }
