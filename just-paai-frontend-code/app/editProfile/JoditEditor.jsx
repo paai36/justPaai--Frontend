@@ -5,14 +5,13 @@ const MyEditor = () => {
     const editor = useRef(null);
 
     const config = {
-        buttons: [
-            'source', '|',
+        buttons: [ '|',
             'bold', 'italic', 'underline', '|',
             'ul', 'ol', '|',
             'outdent', 'indent', '|',
             'font', 'fontsize', 'brush', 'paragraph', '|',
             'align', 'undo', 'redo', '|',
-            'hr', 'eraser', 'fullsize', 'preview'
+            'hr', 'eraser', 'fullsize', 'preview', '|'
         ],
         askBeforePasteFromWord: false,
         askBeforePasteHTML: false,
