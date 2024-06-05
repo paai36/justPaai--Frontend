@@ -18,6 +18,7 @@ const MyEditor = () => {
         ],
         askBeforePasteFromWord: false,
         askBeforePasteHTML: false,
+        limitWords : 50,
     };
 
     useEffect(() => {
