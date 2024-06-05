@@ -6,9 +6,8 @@ import Link from 'next/link';
 import { auth } from "../../config/firebaseApp";
 import styles from "./page.module.css"
 import React from 'react'
-import JoditEditor from 'jodit-react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+// import JoditEditor from 'jodit-react';
+import MyEditor from "./JoditEditor"
 const EditProfile = () => {
   const editor = useRef(null)
   const [content, setContent] = useState("")
@@ -138,22 +137,14 @@ const EditProfile = () => {
       <div className={styles.fieldHeading} >
         About
       </div>
-        <JoditEditor 
+        {/* <JoditEditor 
           ref={editor}
           value={content}
           onBlur={newContent => setContent(newContent)}
 			  onChange={newContent => {}}
         config={config}
-        />
-        {/* <div className={styles.quillEditorWrapper}>
-              <ReactQuill
-                className={styles.quillEditor}
-                theme="snow"
-                value={content}
-                onChange={setContent}
-                placeholder='Start Typing...'
-              />
-            </div> */}
+        /> */}
+        <MyEditor></MyEditor>
       </div>
       </div>
       <div className={styles.buttonsWrapper}>
