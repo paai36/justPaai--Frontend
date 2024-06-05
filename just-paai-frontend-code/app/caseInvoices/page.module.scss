@@ -1,0 +1,323 @@
+@import "../imports.module.scss";
+
+div.InvoiceRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 0.5vw;
+    min-height: 7vh;
+    position: relative;
+
+
+    input {
+        position: relative;
+        left: 0;
+        margin: 0 1vw 0 0;
+    }
+
+    p {
+        height: 100%;
+        margin: 0;
+    }
+
+    p.invoiceName {
+        position: absolute;
+        top: 30%;
+        left: 4.5%;
+        max-width: 31%;
+        font-size: 0.9rem;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    p.amount {
+        position: absolute;
+        top: 40%;
+        left: 40%;
+        font-size: 0.9rem;
+        max-width: 10%;
+        text-wrap: wrap;
+        line-height: 0.9rem;
+    }
+
+    p.statusPending {
+        position: absolute;
+        // top: 20%;
+        left: 56%;
+        // font-size: 0.9rem;
+        // line-height: 0.9rem;
+        padding: 1vh 1vw;
+        border-radius: 30px;
+        background-color: $semantic_secondary;
+        color: $white;
+        // min-width: 4%;
+        height: 2.5vh;
+        text-align: center;
+    }
+
+    p.statusPaid {
+        position: absolute;
+        // top: 20%;
+        left: 57.5%;
+        // font-size: 0.9rem;
+        // line-height: 0.9rem;
+        padding: 1vh 1vw;
+        border-radius: 30px;
+        background-color: $semantic_success;
+        color: $white;
+        // min-width: 4%;
+        height: 2.5vh;
+        text-align: center;
+    }
+
+    p.dueDate {
+        position: sticky;
+        top: 0;
+        left: 76.5%;
+        font-size: 1rem;
+        text-wrap: wrap;
+        line-height: 0.9rem;
+    }
+
+    p.viewbtn {
+        position: sticky;
+        top: 0;
+        left: 95%;
+        font-size: 1rem;
+        cursor: pointer;
+        color: $blue50;
+    }
+}
+
+div.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2vh 2vw;
+    background-color: $gray0;
+    column-gap: 2vw;
+
+    p {
+        padding: 0;
+        margin: 0;
+    }
+
+    div.mainContent {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        max-height: 96vh;
+
+        div.top {
+            p.path {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        div.invoicesBox {
+            background-color: $white;
+            padding: 1vh 1vw;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 1vh;
+
+            div.heading {
+                font-size: 1.5rem;
+                font-weight: 500;
+            }
+
+            div.mainBox {
+                display: flex;
+                flex-direction: column;
+                row-gap: 1vh;
+
+                div.actions {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    div.searchWrapper {
+                        width: 50%;
+                        input {
+                            border: 1px solid $border;
+                            padding: 1.25vh 1vw;
+                            border-radius: 6px;
+                            width: 100%;
+                            &:focus {
+                                outline: none;
+                            }
+                        }
+                    }
+
+                    div.filterSort {
+                        display: flex;
+                        flex-direction: row;
+                        column-gap: 1vw;
+
+                        select {
+                            padding: 1.25vh 1vw;
+                            border-radius: 6px;
+                            border: 1px solid $border;
+                        }
+
+                        select.filter {
+                            option {}
+                        }
+
+                        select.sort {
+                            option {}
+                        }
+                    }
+                }
+
+                div.cases {
+                    border: 1px solid $border;
+                    border-radius: 6px;
+                    width: auto;
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 50vh;
+
+                    div.top {
+                        height: 3.2vh;
+                        display: flex;
+                        flex-direction: row;
+                        padding: 1vh 1vw;
+                        color: $gray0;
+                        background-color: $gray80;
+                        border-top-left-radius: 6px;
+                        border-top-right-radius: 6px;
+                        position: relative;
+
+                        p {
+                            margin: 0;
+                            padding: 0;
+                        }
+
+                        p.name {
+                            position: absolute;
+                            left: 4.5%;
+                        }
+
+                        p.client {
+                            position: absolute;
+                            left: 40%;
+                        }
+
+                        p.status {
+                            position: absolute;
+                            left: 58%;
+                        }
+
+                        p.date {
+                            position: absolute;
+                            left: 76%;
+                        }
+                    }
+
+                    div.casesList {
+                        overflow-y: scroll;
+                        @include disappear-scrollbar;
+                        min-height: 0vh;
+                        max-height: 50vh;
+
+                        li {
+                            list-style: none;
+                            border-bottom: 1px solid $border;
+
+                            &:last-child {
+                                border-bottom: none;
+                            }
+                        }
+                    }
+
+                    div.bottom {
+                        border-top: 1px solid $border;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                        font-size: 0.8rem;
+                        padding: 0.5vh 1vw;
+                        color: $gray60;
+                        margin-top: auto;
+
+                        div.left {
+                            display: flex;
+                            flex-direction: row;
+
+                            div.delete {
+                                border-right: 1px solid $border;
+                                padding: 0.25vh 0.5vw;
+                                display: flex;
+                                align-items: center;
+                                cursor: pointer;
+                            }
+
+                            div.pending {
+                                padding: 0.25vh 0.5vw;
+                                display: flex;
+                                align-items: center;
+                                cursor: pointer;
+                            }
+                        }
+
+                        div.right {
+                            display: flex;
+                            flex-direction: row;
+
+                            div.pending {
+                                border-right: 1px solid $border;
+                                padding: 0.25vh 0.5vw;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                cursor: pointer;
+
+                                p.am {
+                                    color: $semantic_danger;
+                                }
+                            }
+
+                            div.paid {
+                                padding: 0.25vh 0.5vw;
+                                display: flex;
+                                align-items: center;
+                                flex-direction: column;
+                                cursor: pointer;
+
+                                p.am {
+                                    color: $semantic_success;
+                                }
+                            }
+                        }
+
+
+                    }
+                }
+            }
+
+            div.btn {
+                display: flex;
+                align-self: flex-end;
+                justify-self: flex-end;
+
+                button {
+                    color: $white;
+                    width: fit-content;
+                    background-color: $blue60;
+                    border: none;
+                    padding: 1.5vh 2vw;
+                    border-radius: 12px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

@@ -7,7 +7,7 @@ export default function onboarding() {
     const router = useRouter();
     const handleSubmit = () => {
         //handleSubmit
-        router.push("/caseDashboard");
+        router.push("/dashboard");
     }
     return (
         <main className={styles.mainContent}>
