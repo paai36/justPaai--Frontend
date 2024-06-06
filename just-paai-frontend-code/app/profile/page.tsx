@@ -1,10 +1,13 @@
 "use client";
-import { useState, useEffect } from "react";
-import styles from "./page.module.scss"
+import { useState } from "react";
+import styles from "./page.module.scss";
 import { userInterface } from "../../interfaces";
 import { auth } from "../../config/firebaseApp";
+import VCardModal from "../../components/VCard/index";
 
-export default function onboarding() {
+export default function Onboarding() {
+    const [showModal, setShowModal] = useState(false);
+
     const userDetails: userInterface = {
         imageUrl: "",
         name: "Keshav Jalan",
@@ -19,18 +22,24 @@ export default function onboarding() {
             address: "bgfrggherough",
             aadhaar: "khgiu hegi heiugh",
         }
-    }
+    };
+
     const editPage = () => {
         window.location.href = '/editProfile';
-    }
+    };
+
+    const handleModalOpen = () => {
+        setShowModal(true);
+    };
+
+    const handleModalClose = () => {
+        setShowModal(false);
+    };
+
     return (
         <main className={styles.mainContent}>
-            <h2>
-                Edit Profile
-            </h2>
-            <p className={styles.back}>
-                Back
-            </p>
+            <h2>Edit Profile</h2>
+            <p className={styles.back}>Back</p>
             <section>
                 <div className={styles.main}>
                     <img src={auth?.currentUser?.photoURL ? auth?.currentUser?.photoURL : "/Defaultpfp.svg"} alt="" height={80} width={80} />
@@ -38,17 +47,13 @@ export default function onboarding() {
                     <p>{userDetails?.qualifications.highestQualification}</p>
                 </div>
                 <div className={styles.about}>
-                    <label className={styles.aboutyou}>
-                        About You
-                    </label>
+                    <label className={styles.aboutyou}>About You</label>
                     <div className={styles.aboutText}>
                         {userDetails?.about}
                     </div>
                 </div>
                 <div className={styles.contact}>
-                    <label>
-                        Your Contact Info
-                    </label>
+                    <label>Your Contact Info</label>
                     <div className={styles.mailPhone}>
                         <div className={styles.email}>
                             <label>Email</label>
@@ -68,9 +73,10 @@ export default function onboarding() {
                 </div>
             </section>
             <div className={styles.bottom}>
-                <button className={styles.vcard}>Preview Your VCard</button>
+                <button className={styles.vcard} onClick={handleModalOpen}>Preview Your VCard</button>
                 <button className={styles.edit} onClick={editPage}>Edit Details</button>
             </div>
+            {showModal && <VCardModal showModal={showModal} onClose={handleModalClose} />}
         </main>
-    )
+    );
 }
