@@ -9,6 +9,11 @@ const MyEditor = () => {
     const [content, setContent] = useState('');
 
     const config = {
+        readonly: false, // All options from https://xdsoft.net/jodit/doc/
+    toolbarSticky: false,
+    showCharsCounter: false,
+    showWordsCounter: false,
+    showXPathInStatusbar: false,
         buttons: [
             '|', 'bold', 'italic', 'underline', '|',
             'ul', 'ol', '|', 'outdent', 'indent', '|',
@@ -19,6 +24,7 @@ const MyEditor = () => {
         askBeforePasteFromWord: false,
         askBeforePasteHTML: false,
         limitWords : 50,
+        // toolbar : false
     };
 
     useEffect(() => {

@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import Modal from '../Modal';
 import styles from './VCard.module.scss';
-
+import { auth } from "../../config/firebaseApp";
+import Image from 'next/image';
+import qr from "../../public/qr.png"
+import logo from "../../public/logo.png"
 export default function VCardModal({ showModal, onClose }) {
     const [vCardDetails, setVCardDetails] = useState({
         name: '',
@@ -28,53 +31,64 @@ export default function VCardModal({ showModal, onClose }) {
         <Modal showModal={showModal} onClose={onClose}>
             <div className={styles.wrapper}>
                 <img className={styles.close} onClick={() => onClose()} src="/close.svg" alt='X' />
-                <h2>Share your <span>VCard</span></h2>
+                <h2>Share your <span>Vcard</span></h2>
                 <div className={styles.main}>
-                    <div>
-                        <label>Name</label>
-                        <input
-                            placeholder="Your Name"
-                            name="name"
-                            value={vCardDetails.name}
-                            onChange={handleInputChange}
-                        />
+                 <div className={styles.topWrapper}>
+                    <div className={styles.profilePic}>
+                    <img src={auth?.currentUser?.photoURL ? auth?.currentUser?.photoURL : "/Defaultpfp.svg"} alt="" height={80} width={80} />
                     </div>
-                    <div>
-                        <label>Email</label>
-                        <input
-                            placeholder="Your Official Email"
-                            name="email"
-                            value={vCardDetails.email}
-                            onChange={handleInputChange}
-                        />
+                    <div className={`${styles.name}`}>
+                        <div className={`${styles.label} ${styles.nameLabel}`}>
+                            Name
+                        </div>
+                    <span>{auth?.currentUser?.displayName ? auth?.currentUser?.displayName : "Ritik Chandra"}</span>
                     </div>
-                    <div>
-                        <label>Phone</label>
-                        <input
-                            placeholder="Your Phone Number"
-                            name="phone"
-                            value={vCardDetails.phone}
-                            onChange={handleInputChange}
-                        />
+                 </div>
+                 <div className={styles.info}>
+                 <div className={styles.mailPhone}>
+                 <div className={`${styles.mail} ${styles.field}`}>
+                        <div className={`${styles.label} ${styles.mailLabel}`}>
+                           Email
+                        </div>
+                    <span>ritik.chandra009@gmail.com</span>
                     </div>
-                    <div>
-                        <label>Address</label>
-                        <input
-                            placeholder="Your Address"
-                            name="address"
-                            value={vCardDetails.address}
-                            onChange={handleInputChange}
-                        />
+                    <div className={`${styles.phone} ${styles.field}`}>
+                        <div className={`${styles.label} ${styles.phoneLabel}`}>
+                            Phone
+                        </div>
+                    <span>7982895568</span>
                     </div>
-                    <div>
-                        <label>Organization</label>
-                        <input
-                            placeholder="Your Organization"
-                            name="organization"
-                            value={vCardDetails.organization}
-                            onChange={handleInputChange}
-                        />
+                 </div>
+                 <div className={styles.qualificationsAndCases}>
+                 <div className={`${styles.qualifications} ${styles.field}`}>
+                        <div className={`${styles.label} ${styles.qualificationsLabel}`}>
+                           Highest Qualification
+                        </div>
+                    <span>Bachelor of Laws</span>
                     </div>
+                    <div className={`${styles.cases} ${styles.field}`}>
+                        <div className={`${styles.label} ${styles.casesLabel}`}>
+                        Cases Completed
+                        </div>
+                    <span>36</span>
+                    </div>
+                 </div>
+                 </div>
+                 <div className={`${styles.about} ${styles.field}`}>
+                 <div className={`${styles.label} ${styles.aboutLabel}`}>
+                        About
+                        </div>
+                        <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam ullam dicta error facilis rem illum atque reiciendis libero quam sit? Facilis, unde odit. Illum nisi quas non fugiat maiores voluptate velit, itaque saepe dolorem aperiam dolore iusto quidem voluptatum magnam dignissimos sed dolor sapiente! Facilis dolores nostrum iusto eum nam?</span>
+                 </div>
+                 <div className={styles.qrAndLogo}>
+                    <div className={styles.qr}>
+                        <Image src={qr} />
+                    </div>
+                    <div className={styles.logo}>
+                        <Image src={logo} />
+                    </div>
+                 </div>
+
                 </div>
                 <div className={styles.btns}>
                     <button className={styles.cancel} onClick={() => onClose()}>
