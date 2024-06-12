@@ -1,0 +1,266 @@
+@import "../imports.module.scss";
+
+section.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2vh 2vw;
+    background-color: $gray0;
+    column-gap: 2vw;
+
+    p,
+    h3 {
+        padding: 0;
+        margin: 0;
+    }
+
+    div.mainContent {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        overflow-y: auto;
+        max-height: 96vh;
+        row-gap: 2vh;
+
+        div.top {
+            h2 {
+                margin: 0;
+            }
+
+            p {
+                margin: 0;
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        p.backBtn {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        div.invoiceBox {
+            display: flex;
+            background-color: $white;
+            border-radius: 6px;
+            flex-direction: column;
+            padding: 2vh 1vw;
+            row-gap: 2vh;
+
+            h3 {}
+
+            div.numDate {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                p {
+                    color: $gray60;
+                    font-size: 0.8rem;
+                }
+            }
+
+            div.Itemcontainer {
+                min-height: 30vh;
+                max-height: 50vh;
+                border: 1px solid $border;
+                border-radius: 6px;
+                width: auto;
+
+                div.top {
+                    max-height: 4vh;
+                    display: flex;
+                    flex-direction: row;
+                    padding: 1vh 1vw;
+                    color: $gray0;
+                    background-color: $gray80;
+                    border-top-left-radius: 6px;
+                    border-top-right-radius: 6px;
+                    position: relative;
+                    min-height: 2.5vh;
+
+                    p {
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    p.item {
+                        position: absolute;
+                        left: 5%;
+                    }
+
+                    p.hours {
+                        position: absolute;
+                        left: 60%;
+                    }
+
+                    p.rate {
+                        position: absolute;
+                        left: 72%;
+                    }
+
+                    p.amount {
+                        position: absolute;
+                        left: 88%;
+                    }
+                }
+
+                div.main_container {
+                    min-height: 30vh;
+                    max-height: 40vh;
+                    overflow-y: scroll;
+                    @include disappear-scrollbar;
+
+                    div.row {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        padding: 0 0.5vw;
+                        min-height: 6vh;
+                        position: relative;
+                        border-bottom: 1px solid $gray05;
+
+                        input {
+                            position: relative;
+                            left: 0;
+                            padding: 1vh 1vw;
+                            border-radius: 6px;
+                            max-width: 5%;
+                            background-color: $gray05;
+
+                            &:focus {
+                                outline: none;
+                            }
+                        }
+
+                        p {
+                            height: 100%;
+                            margin: 0;
+                        }
+
+                        input.che {
+                            position: absolute;
+                            top: 30%;
+                            left: 0.5%;
+                        }
+
+                        p.itemName {
+                            position: absolute;
+                            top: 20%;
+                            left: 5%;
+                            width: 30% !important;
+                            max-width: 40%;
+                            border: none;
+                        }
+
+                        p.hours {
+                            position: absolute;
+                            top: 20%;
+                            left: 60%;
+                            border: none;
+                        }
+
+                        p.rate {
+                            position: absolute;
+                            top: 20%;
+                            left: 72%;
+                            border: none;
+                        }
+
+                        p.amount {
+                            position: absolute;
+                            top: 20%;
+                            left: 88%;
+                            border: none;
+                        }
+                    }
+
+                }
+            }
+
+            div.moreDetails {
+                align-self: flex-end;
+                display: flex;
+                flex-direction: column;
+                row-gap: 1.5vh;
+
+                div.pay {
+                    display: flex;
+                    flex-direction: row;
+                    column-gap: 2vw;
+
+                    p.left {
+                        color: $gray70;
+                        font-size: 0.9rem;
+                    }
+                }
+
+                div.date {
+                    display: flex;
+                    flex-direction: row;
+                    column-gap: 2vw;
+
+                    p.left {
+                        color: $gray70;
+                        font-size: 0.9rem;
+                    }
+                }
+
+                div.status {
+                    display: flex;
+                    flex-direction: row;
+                    column-gap: 2vw;
+                    align-items: center;
+
+                    p.left {
+                        color: $gray70;
+                        font-size: 0.9rem;
+                    }
+
+                    select {
+                        padding: 1vh 1vw;
+                        border-radius: 12px;
+                        border: none;
+                        color: $white;
+                    }
+
+                    select.paid {
+                        background-color: $semantic_success;
+                    }
+
+                    select.pending {
+                        background-color: $semantic_state;
+                    }
+                }
+            }
+
+            div.btns {
+                display: flex;
+                flex-direction: row;
+                align-self: flex-end;
+                column-gap: 2vw;
+
+                button {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 1.5vh 2vw;
+                    cursor: pointer;
+                    color: $white;
+                    border-radius: 8px;
+                    border: none;
+                    column-gap: 0.5vw;
+                }
+
+                button.delete {
+                    background-color: $semantic_danger;
+                }
+
+                button.pdf {
+                    background-color: $blue60;
+                }
+            }
+        }
+    }
+}

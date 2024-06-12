@@ -4,6 +4,7 @@ import styles from "./page.module.scss";
 import { CaseInterface } from "../../interfaces";
 import { useRouter } from "next/navigation";
 import Sidebar from "../../components/Sidebar";
+import CaseDetails from "../../components/CaseDetails";
 interface CaseInterface2 extends CaseInterface {
     CaseNumber: number;
     Notes: {
@@ -20,6 +21,19 @@ interface CaseInterface2 extends CaseInterface {
         title: string;
         content: string;
     }[];
+}
+
+interface AICaseInterface {
+    sections: number[];
+    Date: string;
+    Court: string;
+    CaseName: string;
+    CitationNumber: string;
+}
+
+enum PageState {
+    Default,
+    CaseDetails,
 }
 
 export default function caseDashboard() {
@@ -96,7 +110,37 @@ export default function caseDashboard() {
             }
         ]
     }
+    const AICases : AICaseInterface[] = [{
+        sections: [133,145],
+        Date: "3 Dec 2023",
+        Court : "Mumbai High Court",
+        CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
+        CitationNumber: "3343443"
+    },
+    {
+        sections: [133,145],
+        Date: "3 Dec 2023",
+        Court : "Mumbai High Court",
+        CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
+        CitationNumber: "3343443"
+    },
+    {
+        sections: [133,145],
+        Date: "3 Dec 2023",
+        Court : "Mumbai High Court",
+        CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
+        CitationNumber: "3343443"
+    },
+    {
+        sections: [133,145],
+        Date: "3 Dec 2023",
+        Court : "Mumbai High Court",
+        CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
+        CitationNumber: "3343443"
+    }]
+    const [pageState, setpageState] = useState<PageState>(PageState.Default);
     return (
+        <>
         <section className={styles.main}>
             <div className={styles.mainContent}>
                 <div className={styles.heading}>
@@ -107,8 +151,36 @@ export default function caseDashboard() {
                         Case Number {caseDetails.CaseNumber}
                     </p>
                 </div>
-                <div>
-
+                <div className={styles.Cases}>
+                    <div className={styles.top}>
+                        <div className={styles.left}>
+                            <p className={styles.hey}>Hey there! Your <span>AI Helper</span> found some cases for you.</p>
+                            <p className={styles.det}>These cases are suggested from our extensive case database. You can explore more cases and add them to your research notes in the research section</p>
+                        </div>
+                        <div className={styles.right}>
+                            <p>View/Edit Summary +</p>
+                        </div>
+                    </div>
+                    <div className={styles.bottom1}>
+                        {AICases?.map((caseData : AICaseInterface, index: number) => (
+                            <li key={index}>
+                                <div className={styles.top}>
+                                    <p>Sections {caseData.sections.map((sec : number) => (
+                                        <span>{sec} ,</span>
+                                    ))}</p>
+                                    <p>{caseData.Date}</p>
+                                    <p>{caseData.Court}</p>
+                                </div>
+                                <div className={styles.mid}>
+                                    {caseData.CaseName}
+                                </div>
+                                <div className={styles.bottom}>
+                                    <p onClick={() => {setpageState(PageState.CaseDetails)}}>Quick Look <img src="/eye.svg"/></p>
+                                    <a href={caseData.CitationNumber}>Citation Number <img src="/toprightarr.svg"/></a>
+                                </div>
+                            </li>
+                        ))}
+                    </div>
                 </div>
                 <div className={styles.notes}>
                     <div className={styles.notesHeading}>
@@ -195,5 +267,7 @@ export default function caseDashboard() {
                 <Sidebar />
             </div>
         </section>
+        <CaseDetails onClose={() => {setpageState(PageState.Default)}} showModal={pageState === PageState.CaseDetails}/>
+        </>
     )
 }

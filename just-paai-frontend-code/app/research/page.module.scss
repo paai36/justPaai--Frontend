@@ -1,0 +1,337 @@
+@import "../imports.module.scss";
+
+div.noteRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 0.5vw;
+    min-height: 10vh;
+    position: relative;
+
+
+    input {
+        position: relative;
+        left: 0;
+        margin: 0 1vw 0 0;
+    }
+
+    p {
+        height: 100%;
+        margin: 0;
+    }
+
+    div.noteContent {
+        position: absolute;
+        top: 10%;
+        left: 2.5%;
+        max-width: 48%;
+        font-size: 0.9rem;
+
+        display: flex;
+        flex-direction: column;
+
+        h3 {
+            margin: 0;
+            padding: 0;
+            color: $gray80;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        p {
+            display: -webkit-box;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            font-size: 0.7rem;
+            color: $gray60;
+        }
+    }
+
+    p.type {
+        position: absolute;
+        top: 35%;
+        left: 58%;
+        font-size: 0.9rem;
+        // text-wrap: wrap;
+        // line-height: 0.9rem;
+        padding: 0.5vh 1.5vw;
+        border-radius: 8px;
+        background-color: $blue20;
+        color: $blue60;
+        width: 15%;
+        text-align: center;
+        height: fit-content;
+    }
+
+    p.date {
+        position: sticky;
+        top: 0;
+        left: 82%;
+        font-size: 1rem;
+        text-wrap: wrap;
+        line-height: 0.9rem;
+    }
+
+    p.viewbtn {
+        position: sticky;
+        top: 0;
+        left: 95%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: $blue50;
+    }
+}
+
+section.main {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+    padding: 3vh 2vw;
+    overflow-y: auto;
+
+    h3,
+    p,
+    h2,
+    h1 {
+        margin: 0;
+    }
+
+    div.top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-self: flex-start;
+        row-gap: 1.5vh;
+
+        h3 {
+            font-weight: 600;
+        }
+
+        div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-self: flex-start;
+            color: $gray50;
+            font-size: 0.9rem;
+        }
+    }
+
+    div.searchBoxWrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        height: 20vh;
+        row-gap: 4vh;
+        background: linear-gradient(45deg, rgba(232, 100, 39, 0.32), rgba(245, 197, 24, 0.3), rgba(17, 149, 214, 0.2));
+        border: 1px solid linear-gradient(45deg, rgba(232, 100, 39, 1), rgba(245, 197, 24, 1), rgba(17, 149, 214, 1));
+        border-radius: 8px;
+        padding: 2vh 0;
+
+        div.t {
+            display: flex;
+            flex-direction: row;
+            width: 90%;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            h3 {
+                font-weight: 500;
+                margin: 0;
+                flex: 1;
+                text-align: center;
+            }
+
+            div.icon {
+                display: flex;
+                align-items: center;
+                background-color: $white;
+                border-radius: 100px;
+                padding: 0.7vh 0.35vw;
+                cursor: pointer;
+                margin-left: auto;
+            }
+        }
+
+        p.des {
+            width: 45%;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: $gray70;
+        }
+
+
+        form.searchBox {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-color: $white;
+            padding: 1.5vh 2vw;
+            padding-left: 1vw;
+            border-radius: 8px;
+            width: 70%;
+
+            input {
+                border: none;
+                outline: none;
+                width: 100%;
+                font-size: 1rem;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            button {
+                border: none;
+                color: $white;
+                background-color: $blue60;
+                padding: 1vh 1.5vw;
+                border-radius: 8px;
+                cursor: pointer;
+                justify-self: flex-end;
+            }
+        }
+    }
+
+    div.notes {
+        display: flex;
+        flex-direction: column;
+        row-gap: 2vh;
+        background-color: $white;
+        padding: 2vh 2vw;
+        border-radius: 8px;
+        div.head {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            h3{}
+            button.newNote{
+                background-color: $blue20;
+                color: $blue60;
+                border: 1px solid $blue60;
+                padding: 1.5vh 2vw;
+                border-radius: 8px;
+                cursor: pointer;
+            }
+        }
+        div.actions {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            div.searchWrapper {
+                input {
+                    border: 1px solid $border;
+                    padding: 1vh 1vw;
+                    border-radius: 6px;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+
+            div.filterSort {
+                display: flex;
+                flex-direction: row;
+                column-gap: 1vw;
+
+                select {
+                    padding: 1vh 1vw;
+                    border-radius: 6px;
+                    border: 1px solid $border;
+                }
+
+                select.filter {
+                    option {}
+                }
+
+                select.sort {
+                    option {}
+                }
+            }
+        }
+
+        div.notes1 {
+            min-height: 50vh;
+            max-height: 70vh;
+            border: 1px solid $border;
+            border-radius: 6px;
+            width: 100%;
+            div.top {
+                max-height: 4vh;
+                display: flex;
+                flex-direction: row;
+                padding: 1vh 1vw;
+                color: $gray0;
+                background-color: $gray80;
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+                position: relative;
+                min-height: 2.5vh;
+                width: calc(100% - 2vw);
+
+                p {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                p.notes {
+                    position: absolute;
+                    left: 3%;
+                }
+
+                p.type {
+                    position: absolute;
+                    left: 65.75%;
+                }
+
+                p.date {
+                    position: absolute;
+                    left: 82%;
+                }
+            }
+
+            div.notesList {
+                min-height: 50vh;
+                max-height: 60vh;
+                overflow-y: scroll;
+                @include disappear-scrollbar;
+
+                li {
+                    list-style: none;
+                    border-bottom: 1px solid $border;
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                }
+            }
+
+            div.bottom {
+                border-top: 1px solid $border;
+                display: flex;
+                flex-direction: row;
+                justify-content: start;
+                align-items: center;
+                font-size: 0.8rem;
+                padding: 1.5vh 1vw;
+                color: $gray60;
+
+                div.delete {
+                    padding: 0.25vh 0.5vw;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
