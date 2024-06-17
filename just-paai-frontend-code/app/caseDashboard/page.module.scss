@@ -184,12 +184,12 @@ section.main {
 					flex-direction: column;
 					align-items: center;
 					justify-content: center;
-
+					row-gap: 1vh;
 					button {
 						color: $white;
 						background-color: $blue60;
 						border: none;
-						padding: 2vh 1.5vw;
+						padding: 1vh 1.5vw;
 						border-radius: 12px;
 						cursor: pointer;
 					}
@@ -258,6 +258,7 @@ section.main {
 				background-color: $white;
 				margin-right: 1vw;
 				max-height: 100%;
+				width: 100%;
 
 				div.noticesHeading {
 					display: flex;
@@ -286,6 +287,21 @@ section.main {
 					overflow-y: scroll;
 					max-height: 80%;
 					@include disappear-scrollbar;
+					div.emptystate {
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						justify-content: center;
+						row-gap: 1vh;
+						button {
+							color: $white;
+							background-color: $blue60;
+							border: none;
+							padding: 1vh 1.5vw;
+							border-radius: 12px;
+							cursor: pointer;
+						}
+					}
 
 					div.notice {
 						display: flex;
@@ -337,7 +353,7 @@ section.main {
 				background-color: $white;
 				margin-left: 1vw;
 				max-height: 100%;
-
+				width: 100%;
 				div.invoicesHeading {
 					display: flex;
 					flex-direction: row;
@@ -365,6 +381,21 @@ section.main {
 					overflow-y: scroll;
 					max-height: 80%;
 					@include disappear-scrollbar;
+					div.emptystate {
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						justify-content: center;
+						row-gap: 1vh;
+						button {
+							color: $white;
+							background-color: $blue60;
+							border: none;
+							padding: 1vh 1.5vw;
+							border-radius: 12px;
+							cursor: pointer;
+						}
+					}
 
 					div.invoice {
 						display: flex;

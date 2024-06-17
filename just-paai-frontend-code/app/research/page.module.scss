@@ -116,6 +116,10 @@ section.main {
             align-self: flex-start;
             color: $gray50;
             font-size: 0.9rem;
+
+            p {
+                cursor: pointer;
+            }
         }
     }
 
@@ -127,7 +131,7 @@ section.main {
         justify-content: center;
         height: 20vh;
         row-gap: 4vh;
-        background: linear-gradient(45deg, rgba(232, 100, 39, 0.32), rgba(245, 197, 24, 0.3), rgba(17, 149, 214, 0.2));
+        background: linear-gradient(45deg, rgba(232, 100, 39, 0.2), rgba(245, 197, 24, 0.2), rgba(17, 149, 214, 0.2));
         border: 1px solid linear-gradient(45deg, rgba(232, 100, 39, 1), rgba(245, 197, 24, 1), rgba(17, 149, 214, 1));
         border-radius: 8px;
         padding: 2vh 0;
@@ -207,12 +211,15 @@ section.main {
         background-color: $white;
         padding: 2vh 2vw;
         border-radius: 8px;
+
         div.head {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            h3{}
-            button.newNote{
+
+            h3 {}
+
+            button.newNote {
                 background-color: $blue20;
                 color: $blue60;
                 border: 1px solid $blue60;
@@ -221,6 +228,7 @@ section.main {
                 cursor: pointer;
             }
         }
+
         div.actions {
             display: flex;
             flex-direction: row;
@@ -265,6 +273,7 @@ section.main {
             border: 1px solid $border;
             border-radius: 6px;
             width: 100%;
+
             div.top {
                 max-height: 4vh;
                 display: flex;
@@ -330,6 +339,99 @@ section.main {
                     display: flex;
                     align-items: center;
                     cursor: pointer;
+                }
+            }
+        }
+    }
+
+    div.results {
+        display: flex;
+        flex-direction: column;
+        width: calc(100%);
+        row-gap: 1vh;
+        div.top {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+
+            div.res {
+                color: $gray90;
+                font-size: 1.2rem;
+            }
+
+            img {
+                cursor: pointer;
+            }
+        }
+
+        div.resultsList {
+            display: flex;
+            flex-wrap: wrap;
+            overflow-x: auto;
+            width: 100%;
+            justify-content: space-between;
+            row-gap: 3vh;
+
+            li.case {
+                display: flex;
+                flex-direction: column;
+                list-style: none;
+                row-gap: 2vh;
+                background-color: $white;
+                flex: 0 1 48%;
+                border-radius: 8px;
+                box-sizing: border-box;
+                padding: 1.5vh 2vw;
+
+                div.top1 {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    p{
+                        color: $gray50;
+                        font-size: 0.9rem;
+                    }
+                }
+
+                h3.title {
+                    color: $blue100;
+                    font-weight: 600;
+                }
+
+                p.content {
+                    color: $gray50;
+                    font-size: 0.8rem;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    overflow: hidden;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                }
+
+                div.bottom1 {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    p {
+                        display: flex;
+                        flex-direction: row;
+                        column-gap: 0.5vw;
+                        cursor: pointer;
+                        color: $blue100;
+                    }
+
+                    a {
+                        display: flex;
+                        flex-direction: row;
+                        column-gap: 0.5vw;
+                        cursor: pointer;
+                        color: $blue100;
+                        text-decoration: none;
+                        align-items: center;
+                    }
                 }
             }
         }
