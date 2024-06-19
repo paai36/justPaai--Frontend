@@ -6,6 +6,7 @@ import logo from "../public/assets/logo.svg";
 import Link from "next/link";
 import { signIn } from "../config/firebaseApp";
 import { useRouter } from "next/navigation";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 export default function Home() {
   const router = useRouter();
   const handleGoogleLogin = () => {

@@ -5,6 +5,9 @@ import { auth } from "../../config/firebaseApp";
 import Image from 'next/image';
 import qr from "../../public/qr.png"
 import logo from "../../public/logo.png"
+import gmail from "../../public/Vcard/gmail.png"
+import facebook from "../../public/Vcard/facebook.png"
+import copy from "../../public/Vcard/copy.png"
 export default function VCardModal({ showModal, onClose }) {
     const [vCardDetails, setVCardDetails] = useState({
         name: '',
@@ -91,11 +94,17 @@ export default function VCardModal({ showModal, onClose }) {
 
                 </div>
                 <div className={styles.btns}>
-                    <button className={styles.cancel} onClick={() => onClose()}>
-                        Cancel
+                    <button className={styles.button}>
+                        <Image src={gmail} />
+                        <span>Share via Gmail</span>
                     </button>
-                    <button className={styles.save} onClick={handleSave}>
-                        Save VCard <img src='/toprightwhite.svg' />
+                    <button className={styles.button}>
+                        <Image src={facebook} />
+                        <span>Share via Facebook</span>
+                    </button>
+                    <button className={styles.button}>
+                        <Image src={copy} />
+                        <span>Copy As Image</span>
                     </button>
                 </div>
             </div>

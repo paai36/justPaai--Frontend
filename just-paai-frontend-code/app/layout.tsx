@@ -54,7 +54,7 @@ export default function RootLayout({ children }) {
     dropdown: ["Dashboard", "Research", "Invoices", "Legal Notices"],
   };
   useEffect(() => {
-    setShowSidebar(pathname !== "/" && pathname !== "/Landing" && pathname !== "/onboarding");
+    setShowSidebar(pathname !== "/" && pathname !== "/Landing" && pathname !== "/onboarding" && pathname !== "/CustomCalendar");
   }, [pathname]);
   return (
     <html lang="en">
