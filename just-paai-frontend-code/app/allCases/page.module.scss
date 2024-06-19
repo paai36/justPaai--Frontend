@@ -56,6 +56,8 @@ div.caseRow {
 		// min-width: 4%;
 		height: 2.5vh;
 		text-align: center;
+		display: flex;
+		align-items: center;
 	}
 
 	p.statusActive {
@@ -71,6 +73,8 @@ div.caseRow {
 		// min-width: 4%;
 		height: 2.5vh;
 		text-align: center;
+		display: flex;
+		align-items: center;
 	}
 
 	p.DateStarted {

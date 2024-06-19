@@ -46,6 +46,8 @@ div.InvoiceRow {
     p.statusPending {
         position: absolute;
         // top: 20%;
+        display: flex;
+        align-items: center;
         left: 56%;
         // font-size: 0.9rem;
         // line-height: 0.9rem;
@@ -62,6 +64,8 @@ div.InvoiceRow {
         position: absolute;
         // top: 20%;
         left: 57.5%;
+        display: flex;
+        align-items: center;
         // font-size: 0.9rem;
         // line-height: 0.9rem;
         padding: 1vh 1vw;
@@ -116,6 +120,9 @@ div.main {
             p.path {
                 display: flex;
                 align-items: center;
+            }
+            h2 {
+                margin: 0;
             }
         }
 

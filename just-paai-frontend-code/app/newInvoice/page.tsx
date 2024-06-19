@@ -1,11 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./page.module.scss";
 import { CaseInterface } from "../../interfaces";
 import { invoicesInterface } from "../../interfaces";
 import { invoiceStatus } from "../../interfaces";
 import { invoiceItemInterface } from "../../interfaces";
-
+import jsPDF from 'jspdf';
+import { useRouter } from "next/navigation";
 interface caseInterfaceInvoice extends CaseInterface {
     CaseNumber: number;
     Invoices: invoicesInterface[];
@@ -15,8 +16,17 @@ interface InvoiceRow extends invoiceItemInterface {
     amount: number;
     isChecked: boolean;
 }
+interface FormData {
+    invoiceName: string;
+    invoiceItems: InvoiceRow[];
+    status: invoiceStatus;
+    invoiceNumber: number;
+    dueDate: string;
+}
 
 export default function newInvoice() {
+    const router = useRouter();
+
     const caseDetails: caseInterfaceInvoice = {
         CaseName: "Harayan ifg ifggfoiei",
         ClientName: "Keshav Jalan",
@@ -126,9 +136,60 @@ export default function newInvoice() {
         ]
     }
     const [invoiceRows, setInvoiceRows] = useState<InvoiceRow[]>([]);
-    const [status, setStatus] = useState(invoiceStatus.pending);
+    const [status, setStatus] = useState(invoiceStatus.paid);
+    const prevInvoiceItemsRef = useRef<InvoiceRow[]>([]);
+    const [formData, setFormData] = useState<FormData>({
+        invoiceName: '',
+        invoiceItems: [
+            { id: Date.now(), itemName: '', hours: 0, rate: 0, amount: 0, isChecked: false }
+        ],
+        status: invoiceStatus.paid,
+        invoiceNumber: 334562, // change to generate serial wise
+        dueDate: new Date().toISOString().split('T')[0],
+    });
+    const [netAmount, setNetAmount ] = useState<number>(0);
+    const generatePdf = () => {
+        // Create a new jsPDF instance
+        const doc = new jsPDF();
+
+        // Define font size and margins
+        const fontSize = 12;
+        const margin = 10;
+
+        // Set font size and type
+        doc.setFontSize(fontSize);
+
+        // Add invoice name
+        doc.text(`Invoice Name: ${formData.invoiceName}`, margin, margin);
+
+        // Add other invoice details
+        doc.text(`Invoice Number: ${formData.invoiceNumber}`, margin, margin + fontSize);
+        doc.text(`Invoice Date: ${new Date().toLocaleDateString()}`, margin, margin + fontSize * 2);
+        doc.text(`Due Date: ${formData.dueDate}`, margin, margin + fontSize * 3);
+        doc.text(`Status: ${formData.status}`, margin, margin + fontSize * 4);
+
+        // Add invoice items
+        let startY = margin + fontSize * 6; // Start Y position for invoice items
+        formData.invoiceItems.forEach((item, index) => {
+            const y = startY + index * (fontSize + margin);
+            doc.text(`${index + 1}. ${item.itemName} - Hours: ${item.hours}, Rate: ${item.rate}, Amount: ${item.amount}`, margin, y);
+        });
+
+        // Add total amount
+        const totalAmount = formData.invoiceItems.reduce((total, item) => total + item.amount, 0);
+        doc.text(`Total Amount: ${totalAmount}`, margin, startY + formData.invoiceItems.length * (fontSize + margin));
+
+        // Save the PDF
+        doc.save('invoice.pdf');
+    };
+    const handleDueDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({
+            ...formData,
+            dueDate: e.target.value
+        });
+    };
     const validateRows = () => {
-        for (const row of invoiceRows) {
+        for (const row of formData.invoiceItems) {
             if (!row.itemName || row.hours <= 0 || row.rate <= 0) {
                 return false;
             }
@@ -137,44 +198,93 @@ export default function newInvoice() {
     };
     const handleCreateRow = () => {
         if (validateRows()) {
-            setInvoiceRows([
-                ...invoiceRows,
-                { id: Date.now(), itemName: '', hours: 0, rate: 0, amount: 0, isChecked: false }
-            ]);
+            setFormData((prevData) => ({
+                ...prevData,
+                invoiceItems: [
+                    ...prevData.invoiceItems,
+                    { id: Date.now(), itemName: '', hours: 0, rate: 0, amount: 0, isChecked: false }
+                ]
+            }));
         } else {
             alert("Please fill all fields in the current row before adding a new row.");
         }
     };
+
     const handleInputChange = (id: number, field: keyof InvoiceRow, value: string | number) => {
-        setInvoiceRows(rows =>
-            rows.map(row =>
-                row.id === id ? { ...row, [field]: value, amount: row.hours * row.rate } : row
+        setFormData((prevData) => ({
+            ...prevData,
+            invoiceItems: prevData.invoiceItems.map(row =>
+                row.id === id ? { ...row, [field]: value } : row
             )
-        );
+        }));
     };
 
     const handleCheckboxChange = (id: number) => {
-        setInvoiceRows(rows =>
-            rows.map(row =>
+        setFormData((prevData) => ({
+            ...prevData,
+            invoiceItems: prevData.invoiceItems.map(row =>
                 row.id === id ? { ...row, isChecked: !row.isChecked } : row
             )
-        );
+        }));
     };
 
     const handleDeleteSelectedRows = () => {
-        setInvoiceRows(rows => rows.filter(row => !row.isChecked));
+        setFormData((prevData) => ({
+            ...prevData,
+            invoiceItems: prevData.invoiceItems.filter(row => !row.isChecked)
+        }));
     };
-    const handleStatusChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setStatus(event.target.value as invoiceStatus);
+
+    const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setFormData({
+            ...formData,
+            status: e.target.value as invoiceStatus
+        });
+        setStatus(e.target.value as invoiceStatus);
     };
-    useEffect(() => {
-        setInvoiceRows(rows =>
-            rows.map(row => ({
-                ...row,
-                amount: isNaN(row.hours) || isNaN(row.rate) ? 0 : row.hours * row.rate
+
+    const handleInvoiceNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({
+            ...formData,
+            invoiceName: e.target.value
+        });
+    };
+
+    // Function to calculate the amount
+    const calculateAmounts = () => {
+        const totalAmount = formData.invoiceItems.reduce((total, item) => total + (item.hours * item.rate), 0);
+        setNetAmount(totalAmount);
+        setFormData((prevData) => ({
+            ...prevData,
+            invoiceItems: prevData.invoiceItems.map(item => ({
+                ...item,
+                amount: item.hours * item.rate
             }))
-        );
-    }, [invoiceRows]);
+        }));
+    };
+    const handleSubmit = () => {
+        //API CALL TO SUBMIT THE FORM DATA
+    }
+
+    useEffect(() => {
+        const prevInvoiceItems = prevInvoiceItemsRef.current;
+
+        const hasChanged = formData.invoiceItems.some((item, index) => {
+            return (
+                item.hours !== prevInvoiceItems[index]?.hours ||
+                item.rate !== prevInvoiceItems[index]?.rate
+            );
+        });
+
+        if (hasChanged) {
+            calculateAmounts();
+        }
+
+        prevInvoiceItemsRef.current = formData.invoiceItems;
+    }, [formData.invoiceItems]);
+    // useEffect(() => {
+    //     console.log(formData);
+    // } , [formData])
 
     return (
         <>
@@ -185,15 +295,19 @@ export default function newInvoice() {
                         Dashboard <img src="rightCrr.svg" /> Invoices <img src="rightCrr.svg" /> New Invoice
                     </p>
                 </div>
-                <p className={styles.backBtn}>
+                <p className={styles.backBtn} onClick={() => router.back()}>
                     <img src="leftCrr.svg" alt="" /> Back
                 </p>
                 <div className={styles.invoiceBox}>
                     <div className={styles.one}>
-                        <input placeholder="Enter Invoice Name" />
+                        <input
+                            placeholder="Enter Invoice Name"
+                            value={formData.invoiceName}
+                            onChange={handleInvoiceNameChange}
+                        />
                     </div>
                     <div className={styles.two}>
-                        <p>Invoice Num: 334563</p>
+                        <p>Invoice Num: {formData.invoiceNumber}</p>
                         <p>23 Jan 2024</p>
                     </div>
                     <div className={styles.three}>
@@ -204,7 +318,7 @@ export default function newInvoice() {
                             <p className={styles.amount}>Amount</p>
                         </div>
                         <div className={styles.main_container}>
-                        {invoiceRows.map(row => (
+                            {formData.invoiceItems.map(row => (
                                 <div key={row.id} className={styles.row}>
                                     <input
                                         type="checkbox"
@@ -249,17 +363,21 @@ export default function newInvoice() {
                         <div className={styles.right}>
                             <div className={styles.pay}>
                                 <p className={styles.left}>Net Payable</p>
-                                <p>Rs. 45000</p>
+                                <p>Rs. {netAmount}</p>
                             </div>
                             <div className={styles.date}>
                                 <p className={styles.left}>Due Date</p>
-                                <p>04 Jan 2024</p>
+                                <input
+                                    type="date"
+                                    value={formData.dueDate}
+                                    onChange={handleDueDateChange}
+                                />
                             </div>
                             <div className={styles.status}>
                                 <p className={styles.left}>
                                     Status
                                 </p>
-                                <select onChange={handleStatusChange} value={status} className={status === invoiceStatus.paid ? styles.paid : styles.pending}>
+                                <select onChange={handleStatusChange} value={formData.status} className={status === invoiceStatus.paid ? styles.paid : styles.pending}>
                                     <option value={invoiceStatus.pending}>Pending</option>
                                     <option value={invoiceStatus.paid}>Paid</option>
                                 </select>
@@ -269,8 +387,8 @@ export default function newInvoice() {
                     <div className={styles.five}>
                         <button className={styles.delete}>Delete Invoice <img src="/bin.svg" /></button>
                         <div>
-                            <button className={styles.pdf}>Preview as PDF</button>
-                            <button className={styles.saveSend}>Save and Send Invoice</button>
+                            <button className={styles.pdf} onClick={generatePdf}>Preview as PDF</button>
+                            <button className={styles.saveSend} onClick={handleSubmit}>Save and Send Invoice</button>
                         </div>
                     </div>
                 </div>

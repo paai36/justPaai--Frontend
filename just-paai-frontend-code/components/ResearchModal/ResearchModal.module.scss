@@ -1,0 +1,131 @@
+@import "../../app/imports.module";
+
+div.wrapper {
+    background-color: $gray0;
+    padding: 2vh 2vw;
+    padding-bottom: 6vh;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 45vw;
+    row-gap: 2vh;
+
+    // position: absolute;
+    img.close {
+        align-self: flex-end;
+        cursor: pointer;
+    }
+
+    p,
+    h1,
+    h2,
+    h3 {
+        margin: 0;
+        padding: 0;
+    }
+
+    div.one {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1vh;
+
+        p {
+            color: $gray50;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+    }
+
+    div.two {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1vh;
+
+        p {
+            color: $gray50;
+            font-size: 0.9rem;
+        }
+    }
+
+    div.three {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1vh;
+
+        h3 {
+            font-weight: 600;
+            color: $gray80;
+        }
+
+        div.fileWrap {
+            display: flex;
+            flex-direction: row;
+            column-gap: 1vw;
+
+            div.file {
+                height: 12vh;
+                width: 7vw;
+                border-radius: 6px;
+                background-color: $gray10;
+                font-size: 0.7rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+        }
+    }
+
+    div.four {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1vh;
+
+        p.summaryheading {
+            font-weight: 600;
+            color: $gray90;
+            font-size: 1.2rem;
+        }
+
+        p.summary {
+            font-size: 0.9rem;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 8;
+            -webkit-box-orient: vertical;
+        }
+    }
+
+    div.five {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 2vh;
+        button {
+            padding: 1.5vh 2vw;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            column-gap: 0.5vw;
+        }
+
+        button.edit {
+            border: 1px solid $blue60;
+            color: $blue60;
+            background-color: $white;
+
+        }
+
+        button.download {
+            border: none;
+            color: $white;
+            background-color: $blue60;
+        }
+    }
+}

@@ -7,31 +7,139 @@ section.main {
 	padding: 2vh 2vw;
 	background-color: $gray0;
 	column-gap: 2vw;
-	
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
 	div.mainContent {
-		max-width: 75%;
 		max-height: 95vh;
 		overflow-y: scroll;
 		@include disappear-scrollbar;
 		display: flex;
 		flex-direction: column;
 		row-gap: 2vh;
+		overflow-x: hidden;
+
 		div.heading {
 			padding: 2vh 0;
 			display: flex;
 			flex-direction: column;
 			row-gap: 1vh;
 			font-weight: 500;
+
 			h2 {
 				margin: 0;
 			}
+
 			p {
 				margin: 0;
 				color: $gray50;
 			}
 		}
-		div {
+
+		div.Cases {
+			display: flex;
+			flex-direction: column;
+			height: 30vh;
+			background-color: $white;
+			padding: 2vh 2vw;
+			border-radius: 12px;
+			row-gap: 1vh;
+			max-width: 54vw;
+			border: 1px solid $gray50;
+			div.top {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+
+				div.left {
+					display: flex;
+					flex-direction: column;
+					max-width: 60%;
+					row-gap: 1vh;
+
+					p.hey {
+						font-size: 1.2rem;
+						font-weight: 600;
+
+						span {
+							background: linear-gradient(to bottom,
+									#E86427 0%,
+									#F5C518 80%,
+									#1195D6 200%);
+							-webkit-background-clip: text;
+							-webkit-text-fill-color: transparent;
+							background-clip: text;
+						}
+					}
+
+					p.det {
+						font-size: 0.7rem;
+						color: $gray80;
+					}
+				}
+
+				div.right {
+					p {
+						color: $gray80;
+					}
+				}
+			}
+
+			div.bottom1 {
+				display: flex;
+				flex-direction: row;
+				overflow-x: auto;
+				column-gap: 1vw;
+				height: fit-content;
+				width: 100%;
+				@include disappear-scrollbar;
+				li {
+					flex :0 0 auto;
+					display: flex;
+					flex-direction: column;
+					list-style: none;
+					background-color: $gray10;
+					height: fit-content;
+					width: 30vw;	
+					padding: 1vh 1.5vw;
+					row-gap: 2vh;
+					border-radius: 8px;
+					div.top {
+						display: flex;
+						flex-direction: row;
+						justify-content: space-between;
+
+						p {
+							color: $blue100;
+							font-size: 0.7rem;
+						}
+					}
+
+					div.mid {
+						display: flex;
+						font-size: 1rem;
+					}
+
+					div.bottom {
+						display: flex;
+						flex-direction: row;
+						justify-content: space-between;
+						p {
+							cursor: pointer;
+							display: flex;
+							flex-direction: row;
+							align-items: center;
+							column-gap: 0.5vw;
+							font-size: 0.9rem;
+						}
+					}
+				}
+			}
 		}
+
 		div.notes {
 			display: flex;
 			flex-direction: column;
@@ -40,23 +148,28 @@ section.main {
 			padding: 2vh 2vw;
 			background-color: $white;
 			max-height: 35%;
+
 			div.notesHeading {
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
 				align-items: center;
+
 				div {
 					display: flex;
 					flex-direction: row;
 					align-items: center;
 				}
+
 				div.headingText {
 					color: $blue80;
 				}
+
 				div.newNote {
 					color: $gray60;
 				}
 			}
+
 			ul {
 				display: flex;
 				flex-direction: column;
@@ -64,21 +177,24 @@ section.main {
 				max-height: 80%;
 				overflow-y: scroll;
 				@include disappear-scrollbar;
+
 				// row-gap: 2vh;
 				div.emptystate {
 					display: flex;
 					flex-direction: column;
 					align-items: center;
 					justify-content: center;
+					row-gap: 1vh;
 					button {
 						color: $white;
 						background-color: $blue60;
 						border: none;
-						padding: 2vh 1.5vw;
+						padding: 1vh 1.5vw;
 						border-radius: 12px;
 						cursor: pointer;
 					}
 				}
+
 				div.note {
 					display: flex;
 					flex-direction: row;
@@ -87,19 +203,23 @@ section.main {
 					border-bottom: 1px solid $gray50;
 					padding-bottom: 1vh;
 					padding-top: 1vh;
+
 					&:last-child {
 						border-bottom: none;
 						padding-bottom: 0;
 					}
+
 					div.left {
 						display: flex;
 						flex-direction: column;
 						row-gap: 1vh;
+
 						h3 {
 							margin: 0;
 							font-size: 1rem;
 							font-weight: 500;
 						}
+
 						p {
 							margin: 0;
 							max-width: 90%;
@@ -112,6 +232,7 @@ section.main {
 							color: $gray50;
 						}
 					}
+
 					div.right {
 						display: flex;
 						flex-direction: row;
@@ -121,11 +242,13 @@ section.main {
 				}
 			}
 		}
+
 		div.bottom {
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
 			max-height: 35%;
+
 			div.notices {
 				display: flex;
 				flex-direction: column;
@@ -135,22 +258,28 @@ section.main {
 				background-color: $white;
 				margin-right: 1vw;
 				max-height: 100%;
+				width: 100%;
+
 				div.noticesHeading {
 					display: flex;
 					flex-direction: row;
 					justify-content: space-between;
+
 					div {
 						display: flex;
 						flex-direction: row;
 						align-items: center;
 					}
+
 					div.headingText {
 						color: $blue80;
 					}
+
 					div.new {
 						color: $gray60;
 					}
 				}
+
 				ul {
 					padding: 0;
 					display: flex;
@@ -158,6 +287,22 @@ section.main {
 					overflow-y: scroll;
 					max-height: 80%;
 					@include disappear-scrollbar;
+					div.emptystate {
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						justify-content: center;
+						row-gap: 1vh;
+						button {
+							color: $white;
+							background-color: $blue60;
+							border: none;
+							padding: 1vh 1.5vw;
+							border-radius: 12px;
+							cursor: pointer;
+						}
+					}
+
 					div.notice {
 						display: flex;
 						flex-direction: row;
@@ -166,19 +311,23 @@ section.main {
 						border-bottom: 1px solid $gray50;
 						padding-bottom: 1vh;
 						padding-top: 1vh;
+
 						&:last-child {
 							border-bottom: none;
 							padding-bottom: 0;
 						}
+
 						div.left {
 							margin-right: 1vw;
 						}
+
 						div.right {
 							h3 {
 								margin: 0;
 								font-size: 1rem;
 								font-weight: 500;
 							}
+
 							p {
 								margin: 0;
 								max-width: 80%;
@@ -194,6 +343,7 @@ section.main {
 					}
 				}
 			}
+
 			div.invoices {
 				display: flex;
 				flex-direction: column;
@@ -203,22 +353,27 @@ section.main {
 				background-color: $white;
 				margin-left: 1vw;
 				max-height: 100%;
+				width: 100%;
 				div.invoicesHeading {
 					display: flex;
 					flex-direction: row;
 					justify-content: space-between;
+
 					div {
 						display: flex;
 						flex-direction: row;
 						align-items: center;
 					}
+
 					div.headingText {
 						color: $blue80;
 					}
+
 					div.new {
 						color: $gray60;
 					}
 				}
+
 				ul {
 					padding: 0;
 					display: flex;
@@ -226,6 +381,22 @@ section.main {
 					overflow-y: scroll;
 					max-height: 80%;
 					@include disappear-scrollbar;
+					div.emptystate {
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						justify-content: center;
+						row-gap: 1vh;
+						button {
+							color: $white;
+							background-color: $blue60;
+							border: none;
+							padding: 1vh 1.5vw;
+							border-radius: 12px;
+							cursor: pointer;
+						}
+					}
+
 					div.invoice {
 						display: flex;
 						flex-direction: row;
@@ -234,19 +405,23 @@ section.main {
 						border-bottom: 1px solid $gray50;
 						padding-bottom: 1vh;
 						padding-top: 1vh;
+
 						&:last-child {
 							border-bottom: none;
 							padding-bottom: 0;
 						}
+
 						div.left {
 							margin-right: 1vw;
 						}
+
 						div.right {
 							h3 {
 								margin: 0;
 								font-size: 1rem;
 								font-weight: 500;
 							}
+
 							p {
 								margin: 0;
 								max-width: 80%;

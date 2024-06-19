@@ -41,5 +41,10 @@ export interface invoiceItemInterface {
     itemName: string;
     hours: number;
     rate: number;
-
+}
+export interface notesInterface {
+    noteTitle: string;
+    noteContent: string;
+    Type: string;
+    Date: string;
 }
