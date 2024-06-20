@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { notesInterface } from "../../interfaces";
 import ResearchModal from "../../components/ResearchModal";
 import axios from "axios";
+import api from "../../axios"
 
 enum PageState {
     Default,
@@ -117,7 +118,7 @@ export default function research() {
         Date: "23 Jan 2021"
     },
     ]
-    const [isSerached, setIsSearched] = useState<boolean>(true); //change to false
+    const [isSerached, setIsSearched] = useState<boolean>(false); //change to false
     const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
     const router = useRouter();
     const [searchQuery, setSearchQuery] = useState<string>("");

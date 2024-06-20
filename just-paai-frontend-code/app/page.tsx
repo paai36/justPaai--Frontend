@@ -7,13 +7,23 @@ import Link from "next/link";
 import { signIn } from "../config/firebaseApp";
 import { useRouter } from "next/navigation";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import api from "../axios"
 export default function Home() {
   const router = useRouter();
+  
   const handleGoogleLogin = () => {
-    signIn().then(async (user) => {
+    signIn().then(async (user: any) => {
       if (user.user?.email) {
-        console.log("Succuess");
-        router.push("/onboarding");
+        try {
+          const res = await api.post(`/user/login/?firebase_id=${user.user.uid}`, {
+            firebase_id: user.user.uid,
+        });
+          if (res.status / 2 === 100) {
+            localStorage.setItem("uid", user.user.uid);
+            router.push("/onboarding"); //Will work after api integration
+        }
+        } catch (error) {}
+        router.push("/onboarding"); //remove after API Integration
       } else {
         console.log("FAILED");
       }
