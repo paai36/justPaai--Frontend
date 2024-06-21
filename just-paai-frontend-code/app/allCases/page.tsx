@@ -160,9 +160,9 @@ export default function allCases() {
                         </div>
                         <div className={styles.casesList}>
                             {sortedCases?.map((caseData: CaseInterface, index: number) => (
-                                <li>
+                                <li key={index}>
                                     <CaseRow caseData={caseData}></CaseRow>
-                                </li>
+                                </li>   
                             ))}
                         </div>
                         <div className={styles.bottom}>

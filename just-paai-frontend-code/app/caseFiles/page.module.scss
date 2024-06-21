@@ -1,0 +1,140 @@
+@import "../imports.module.scss";
+
+div.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2vh 2vw;
+    background-color: $gray0;
+    column-gap: 2vw;
+
+    p {
+        padding: 0;
+        margin: 0;
+    }
+
+    div.mainContent {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        max-height: 96vh;
+        row-gap: 2vh;
+        div.heading {
+            display: flex;
+            flex-direction: column;
+            row-gap: 1vh;
+            h3 {
+                margin: 0;
+                font-weight: 600;
+                color: $gray90;
+            }
+            p.caseNum{
+                font-size: 0.8rem;
+                color: $gray50;
+                font-weight: 600;
+            }
+        }
+
+        div.files {
+            min-height: 60vh;
+			max-height: 80vh;
+			border: 1px solid $border;
+			border-radius: 6px;
+			width: auto;
+            div.top {
+                max-height: 4vh;
+                display: flex;
+                flex-direction: row;
+                padding: 1vh 1vw;
+                color: $gray0;
+                background-color: $gray80;
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+                position: relative;
+                min-height: 2.5vh;
+
+                p {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                p.name {
+                    position: absolute;
+                    left: 6%;
+                }
+
+                p.date {
+                    position: absolute;
+                    left: 75.5%;
+                }
+            }
+
+            div.filesList {
+                min-height: 60vh;
+				max-height: 70vh;
+				overflow-y: scroll;
+				@include disappear-scrollbar;
+                li {
+                    list-style: none;
+					border-bottom: 1px solid $border;
+
+					&:last-child {
+						border-bottom: none;
+					}
+
+                    div.fileRow {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        padding: 0 0.5vw;
+                        min-height: 7vh;
+                        position: relative;
+                        img {
+                            position: absolute;
+                            left: 1.5%;
+                        }
+
+                        p.fileName {
+                            position: absolute;
+                            left: 6%;
+                            max-width: 31%;
+                            font-size: 0.9rem;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            overflow: hidden;
+                            -webkit-line-clamp: 2;
+                            -webkit-box-orient: vertical;
+                        }
+
+                        p.DateAdded {
+                            position: absolute;
+                            left: 76%;
+                            font-size: 0.9rem;
+                            max-width: 10%;
+                            text-wrap: wrap;
+                            line-height: 0.9rem;
+                        }
+                        p.viewbtn {
+                            position: sticky;
+                            left: 95%;
+                            font-size: 1rem;
+                            cursor: pointer;
+                            color: $blue50;
+                        }
+                    }
+                }
+            }
+        }
+        button.addBtn {
+			color: $white;
+			width: fit-content;
+			background-color: $blue60;
+			border: none;
+			padding: 2vh 3vw;
+			border-radius: 12px;
+			cursor: pointer;
+			align-self: flex-start;
+		}
+    }
+}
