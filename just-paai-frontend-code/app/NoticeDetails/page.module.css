@@ -1,0 +1,25 @@
+.pageWrapper{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.exampleWrapper{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.example{
+    width: 10vw;
+    height: 15vh;
+    background-color: rgb(114, 119, 123);
+    border-radius: 10px;
+    padding: 10px;
+}
+.add{
+    width: 10vw;
+    height: 15vh;
+    border-radius: 10px;
+    display: flex;
+  align-items: center;
+}
