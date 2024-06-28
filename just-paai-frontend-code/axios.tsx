@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 
 const instance = axios.create({
-    baseURL: "http://justipaai.com/api/v1/"
+    baseURL: "https://justipaai.com/api/v1"
 });
 
 let tempReq: { url?: string | null; method?: string | null; data: any } = { url: null, method: null, data: undefined };
@@ -34,8 +34,8 @@ instance.interceptors.response.use(
                 return Promise.reject(error);
             }
 
-            const res = await instance.post(`/user/login/?firebase_id=${localStorage.getItem("uid")}`, {
-                firebase_id: localStorage.getItem("uid"),
+            const res = await instance.post(`/user/login/`, {
+                id_token: localStorage.getItem("id_token"),
             });
 
             if (res.status === 200) {

@@ -4,7 +4,7 @@ div.main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 2vh 2vw;
+    padding: 3vh 2vw;
     background-color: $gray0;
     column-gap: 2vw;
 
@@ -19,7 +19,7 @@ div.main {
         flex-direction: column;
         overflow-y: auto;
         max-height: 96vh;
-        row-gap: 2vh;
+        row-gap: 3vh;
         div.heading {
             display: flex;
             flex-direction: column;

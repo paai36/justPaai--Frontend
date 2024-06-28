@@ -4,31 +4,40 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import logo from "../public/assets/logo.svg";
 import Link from "next/link";
-import { signIn } from "../config/firebaseApp";
+import { signIn, signOut } from "../config/firebaseApp";
 import { useRouter } from "next/navigation";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import api from "../axios"
+import axios from "axios";
 export default function Home() {
   const router = useRouter();
-  
-  const handleGoogleLogin = () => {
-    signIn().then(async (user: any) => {
-      if (user.user?.email) {
-        try {
-          const res = await api.post(`/user/login/?firebase_id=${user.user.uid}`, {
-            firebase_id: user.user.uid,
-        });
-          if (res.status / 2 === 100) {
-            localStorage.setItem("uid", user.user.uid);
-            router.push("/onboarding"); //Will work after api integration
+  // const baseURL = 'https://justipaai.com/api/v1/'; // replace with your base URL
+  // const api = axios.create({ baseURL });
+
+  const handleLogin = async () => {
+      signIn().then(async (user: any) => {
+        if (
+          user.user?.email
+        ) {
+          try {
+            const res = await api.post(`/users/login/`, {
+              id_token: user.credential.idToken,
+            });
+            console.log("here");
+            if (Math.floor(res.status / 100) === 2) {
+              console.log(res);
+              localStorage.setItem("id_token", user.credential.idToken);
+              router.push("/onboarding"); //Will work after api integration
+            } else { }
+          } catch (error) {
+            console.log(error);
+           }
+        } else {
+          localStorage.clear();
+          signOut();
         }
-        } catch (error) {}
-        router.push("/onboarding"); //remove after API Integration
-      } else {
-        console.log("FAILED");
-      }
-    });
-  };
+      })
+  }
   return (
     <>
       <div className={styles.pageWrapper}>
@@ -87,7 +96,7 @@ export default function Home() {
               </button>
             </form>
             <div className={styles.authButtons}>
-              <button onClick={handleGoogleLogin}>Login With Google</button>
+              <button onClick={() => handleLogin()}>Login With Google</button>
               <button>Login With Google</button>
             </div>
             <div className={styles.loginText}>
