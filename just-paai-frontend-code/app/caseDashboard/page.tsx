@@ -41,7 +41,7 @@ export default function caseDashboard() {
         CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
         ClientName: "Keshav Jalan",
         DateStarted: "15/02/2024",
-        Status: "Active",
+        Status: "O",
         CaseNumber: 221412,
         Notes: [
             // {
