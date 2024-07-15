@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 
 const instance = axios.create({
-    baseURL: "https://justipaai.com/api/v1"
+    baseURL: "https://api.justipaai.com/api/v1/"
 });
 
 let tempReq: { url?: string | null; method?: string | null; data: any } = { url: null, method: null, data: undefined };
