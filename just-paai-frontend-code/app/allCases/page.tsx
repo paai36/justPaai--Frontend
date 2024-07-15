@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import styles from "./page.module.scss";
 import { CaseInterface } from "../../interfaces";
 import { useRouter } from "next/navigation";
-
+import api from "../../axios"
 
 function CaseRow({ caseData }: { caseData: CaseInterface }) {
     //function for each row of case
@@ -13,7 +13,7 @@ function CaseRow({ caseData }: { caseData: CaseInterface }) {
             </input>
             <p className={styles.caseName}>{caseData.CaseName}</p>
             <p className={styles.clientName}>{caseData.ClientName}</p>
-            <p className={caseData?.Status === "Archived" ? styles.statusArch : styles.statusActive}>{caseData.Status}</p>
+            <p className={caseData?.Status === "A" ? styles.statusArch : styles.statusActive}>{caseData.Status === "A" ? "Archived" : "Active"}</p>
             <p className={styles.DateStarted}>{caseData.DateStarted}</p>
             <p className={styles.viewbtn}>view &#62;</p>
         </div>
@@ -26,66 +26,106 @@ export default function allCases() {
         CaseName: "Haryana Dairy nuaray, 1947",
         ClientName: "Keshav Jalan",
         DateStarted: "09 Jan 2024",
-        Status: "Active",
+        Status: "O",
     },
     {
         CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
         ClientName: "Keshav Jalan",
         DateStarted: "09 Jan 2024",
-        Status: "Archived",
+        Status: "A",
     },
     {
         CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
         ClientName: "Keshav Jalan",
         DateStarted: "09 Jan 2024",
-        Status: "Archived",
+        Status: "A",
     },
     {
         CaseName: "hsrh fhusssshsssssrugh rehgehtgiohe tuhg oteh ggggh hhhhhhhhh iu ghuihrguiheuigheuh gegewtuhg uiethgiuph",
         ClientName: "Keshav Jalan",
         DateStarted: "09 Jan 2024",
-        Status: "Active",
+        Status: "O",
     },
     {
         CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
         ClientName: "Keshav Jalan",
         DateStarted: "09 Jan 2024",
-        Status: "Active",
+        Status: "O",
     },
     {
         CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
         ClientName: "Ritik Chandra",
         DateStarted: "09 Jan 2024",
-        Status: "Active",
+        Status: "O",
     },
     {
         CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
         ClientName: "Keshav Jalan",
         DateStarted: "09 Jan 2024",
-        Status: "Active",
+        Status: "O",
     },
     {
         CaseName: "hsrh fhusssshsssssrugh rehgehtgiohe tuhg oteh ggggh hhhhhhhhh iu ghuihrguiheuigheuh gegewtuhg uiethgiuph",
         ClientName: "Keshav Jalan",
         DateStarted: "09 Jan 2024",
-        Status: "Active",
+        Status: "O",
     },
     {
         CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
         ClientName: "Keshav Jalan",
         DateStarted: "09 Jan 2024",
-        Status: "Active",
+        Status: "O",
     },
     {
         CaseName: "Haryana Dairy Dev. Coop. Fed. Ltd vs Jagdish Lal on 13 January, 1947",
         ClientName: "Ritik Chandra",
         DateStarted: "09 Jan 2024",
-        Status: "Active",
+        Status: "O",
     },]
     const router = useRouter();
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [filterType, setFilterType] = useState<string>("All");
     const [sortedCases, setSortedCases] = useState<CaseInterface[]>(allCasesDummy);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [maxPages, setMaxPages] = useState<number>(1);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+
+    const fetchCases = async (page: number) => {
+        setIsLoading(true);
+        try {
+            const response = await api.get(`/cases/?p=${page - 1}`);
+            const { data, current_page, max_pages } = response.data;
+            setSortedCases((prevCases) => [...prevCases, ...data]);
+            setCurrentPage(current_page);
+            setMaxPages(max_pages);
+        } catch (error) {
+            console.error("Error fetching cases:", error);
+        }
+        setIsLoading(false);
+    };
+
+    useEffect(() => {
+        fetchCases(1);
+    }, []);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollHeight = document.documentElement.scrollHeight;
+            const scrollTop = document.documentElement.scrollTop;
+            const clientHeight = document.documentElement.clientHeight;
+
+            if (
+                scrollTop + clientHeight >= scrollHeight &&
+                currentPage <= maxPages &&
+                !isLoading
+            ) {
+                fetchCases(currentPage + 1);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [currentPage, maxPages, isLoading]);
 
     useEffect(() => {
         filterAndSortCases();
@@ -106,9 +146,9 @@ export default function allCases() {
         );
 
         if (filterType === "Active") {
-            filteredCases = filteredCases.filter(caseData => caseData.Status === "Active");
+            filteredCases = filteredCases.filter(caseData => caseData.Status === "O");
         } else if (filterType === "Archived") {
-            filteredCases = filteredCases.filter(caseData => caseData.Status === "Archived");
+            filteredCases = filteredCases.filter(caseData => caseData.Status === "A");
         }
 
         filteredCases.sort((a, b) => new Date(b.DateStarted).getTime() - new Date(a.DateStarted).getTime());
@@ -162,7 +202,7 @@ export default function allCases() {
                             {sortedCases?.map((caseData: CaseInterface, index: number) => (
                                 <li key={index}>
                                     <CaseRow caseData={caseData}></CaseRow>
-                                </li>   
+                                </li>
                             ))}
                         </div>
                         <div className={styles.bottom}>

@@ -1,7 +1,7 @@
 export interface CaseInterface {
     CaseName: string;
     ClientName: string;
-    Status: "Active" | "Archived";
+    Status: "O" | "A";
     DateStarted: string;
 }
 export interface userInterface {
