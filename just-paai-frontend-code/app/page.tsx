@@ -19,14 +19,15 @@ export default function Home() {
         if (
           user.user?.email
         ) {
+          const idt = await(user.user.getIdToken());
           try {
             const res = await api.post(`/users/login/`, {
-              id_token: user.credential.idToken,
+              id_token: idt
             });
             console.log("here");
             if (Math.floor(res.status / 100) === 2) {
               console.log(res);
-              localStorage.setItem("id_token", user.credential.idToken);
+              localStorage.setItem("id_token", idt);
               router.push("/onboarding"); //Will work after api integration
             } else { }
           } catch (error) {
