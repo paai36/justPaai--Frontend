@@ -1,26 +1,41 @@
 import axios, { AxiosError } from "axios";
 
 const instance = axios.create({
-    baseURL: "http://16.171.39.76/api/v1"
+    baseURL: "http://16.171.39.76/api/v1",
+    headers: {
+        "Content-Type": "application/json", // Default header
+    },
 });
 
 let tempReq: { url?: string | null; method?: string | null; data: any } = { url: null, method: null, data: undefined };
 
 instance.interceptors.request.use(
     (config) => {
-        if (!(config.url?.split("?")[0].replaceAll("/", "") === "userlogin")) {
+        // Exclude the login API from adding the Authorization header
+        const isLoginRoute = config.url?.split("?")[0].replaceAll("/", "") === "userlogin";
+
+        if (!isLoginRoute) {
+            const token = localStorage.getItem("access_token");
+            if (token) {
+                config.headers.Authorization = `Bearer ${token}`;
+            }
+        }
+
+        // Store the request details for retry in case of token expiration
+        if (!isLoginRoute) {
             tempReq.url = config.url;
             tempReq.method = config.method;
             tempReq.data = config.data;
         }
 
-        config.withCredentials = true;
+        config.withCredentials = true; // Ensure cookies (if any) are sent with requests
         return config;
     },
     (error) => {
         return Promise.reject(error);
-    },
+    }
 );
+
 
 instance.interceptors.response.use(
     (response) => {
@@ -35,7 +50,7 @@ instance.interceptors.response.use(
             }
 
             const res = await instance.post(`/user/login/`, {
-                id_token: localStorage.getItem("id_token"),
+                id_token: localStorage.getItem("access_token"),
             });
 
             if (res.status === 200) {

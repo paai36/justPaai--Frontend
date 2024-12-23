@@ -1,250 +1,270 @@
 @import "../imports.module.scss";
 
+@keyframes spin {
+	0% {
+	  transform: rotate(0deg);
+	}
+	100% {
+	  transform: rotate(360deg);
+	}
+  }
+
 div.caseRow {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	padding: 0 0.5vw;
-	min-height: 7vh;
-	position: relative;
-	
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 0.5vw;
+  min-height: 7vh;
+  position: relative;
 
-	input {
-		position: relative;
-		left: 0;
-		margin: 0 1vw 0 0;
-	}
+  input {
+    position: relative;
+    left: 0;
+    margin: 0 1vw 0 0;
+  }
 
-	p {
-		height: 100%;
-		margin: 0;
-	}
+  p {
+    height: 100%;
+    margin: 0;
+  }
 
-	p.caseName {
-		position: absolute;
-		top: 20%;
-		left: 2.5%;
-		max-width: 31%;
-		font-size: 0.9rem;
-		text-overflow: ellipsis;
-		display: -webkit-box;
-		overflow: hidden;
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
-	}
+  p.caseName {
+    position: relative;
+    max-width: 31%;
+    font-size: 0.9rem;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
 
-	p.clientName {
-		position: absolute;
-		top: 40%;
-		left: 40%;
-		font-size: 0.9rem;
-		max-width: 10%;
-		text-wrap: wrap;
-		line-height: 0.9rem;
-	}
+  p.clientName {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    font-size: 0.9rem;
+    max-width: 10%;
+    text-wrap: wrap;
+    line-height: 0.9rem;
+  }
 
-	p.statusArch {
-		position: absolute;
-		top: 20%;
-		left: 57.5%;
-		font-size: 0.9rem;
-		line-height: 0.9rem;
-		padding: 1vh 0.5vw;
-		border-radius: 30px;
-		background-color: $semantic_secondary;
-		color: $white;
-		// min-width: 4%;
-		height: 2.5vh;
-		text-align: center;
-		display: flex;
-		align-items: center;
-	}
+  p.statusArch {
+    position: relative;
+    // top: 20%;
+    left: 23.5%;
+    font-size: 0.9rem;
+    line-height: 0.9rem;
+    padding: 1vh 0.5vw;
+    border-radius: 30px;
+    background-color: $semantic_secondary;
+    color: $white;
+    // min-width: 4%;
+    height: 2.5vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
 
-	p.statusActive {
-		position: absolute;
-		top: 20%;
-		left: 57.5%;
-		font-size: 0.9rem;
-		line-height: 0.9rem;
-		padding: 1vh 0.5vw;
-		border-radius: 30px;
-		background-color: $semantic_success;
-		color: $white;
-		// min-width: 4%;
-		height: 2.5vh;
-		text-align: center;
-		display: flex;
-		align-items: center;
-	}
+  p.statusActive {
+    position: absolute;
+    top: 20%;
+    left: 57.5%;
+    font-size: 0.9rem;
+    line-height: 0.9rem;
+    padding: 1vh 0.5vw;
+    border-radius: 30px;
+    background-color: $semantic_success;
+    color: $white;
+    // min-width: 4%;
+    height: 2.5vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
 
-	p.DateStarted {
-		position: sticky;
-		top: 0;
-		left: 76.5%;
-		font-size: 1rem;
-		text-wrap: wrap;
-		line-height: 0.9rem;
-	}
+  p.DateStarted {
+    position: sticky;
+    top: 0;
+    left: 76.5%;
+    font-size: 1rem;
+    text-wrap: wrap;
+    line-height: 0.9rem;
+  }
 
-	p.viewbtn {
-		position: sticky;
-		top: 0;
-		left: 95%;
-		font-size: 1rem;
-		cursor: pointer;
-		color: $blue50;
-	}
+  p.viewbtn {
+    position: sticky;
+    top: 0;
+    left: 95%;
+    font-size: 1rem;
+    cursor: pointer;
+    color: $blue50;
+  }
 }
 
 div.main {
-	background-color: $white;
-	padding: 1vh 2vw;
-	overflow-y: scroll;
-	@include disappear-scrollbar;
+  background-color: $white;
+  padding: 1vh 2vw;
+  overflow-y: scroll;
+  @include disappear-scrollbar;
 
-	div.heading {
-	}
+  div.heading {
+  }
 
-	div.mainContent {
-		display: flex;
-		flex-direction: column;
-		row-gap: 2vh;
+  div.mainContent {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
 
-		div.actions {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
+    div.actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
 
-			div.searchWrapper {
-				input {
-					border: 1px solid $border;
-					padding: 1vh 1vw;
-					border-radius: 6px;
-					&:focus {
-						outline: none;
-					}
-				}
-			}
+      div.searchWrapper {
+        input {
+          border: 1px solid $border;
+          padding: 1vh 1vw;
+          border-radius: 6px;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
 
-			div.filterSort {
-				display: flex;
-				flex-direction: row;
-				column-gap: 1vw;
+      div.filterSort {
+        display: flex;
+        flex-direction: row;
+        // column-gap: 1vw;
 
-				select {
-					padding: 1vh 1vw;
-					border-radius: 6px;
-					border: 1px solid $border;
-				}
+        select {
+          padding: 1vh 1vw;
+          border-radius: 6px;
+          border: 1px solid $border;
+        }
 
-				select.filter {
-					option {
-					}
-				}
+        select.filter {
+          option {
+          }
+        }
 
-				select.sort {
-					option {
-					}
-				}
-			}
-		}
+        select.sort {
+          option {
+          }
+        }
+      }
+    }
 
-		div.cases {
-			min-height: 50vh;
-			max-height: 70vh;
-			border: 1px solid $border;
-			border-radius: 6px;
-			width: auto;
+    div.cases {
+      min-height: 50vh;
+      max-height: 70vh;
+      border: 1px solid $border;
+      border-radius: 6px;
+      width: auto;
 
-			div.top {
-				max-height: 4vh;
-				display: flex;
-				flex-direction: row;
-				padding: 1vh 1vw;
-				color: $gray0;
-				background-color: $gray80;
-				border-top-left-radius: 6px;
-				border-top-right-radius: 6px;
-				position: relative;
-				min-height: 2.5vh;
-				p {
-					margin: 0;
-					padding: 0;
-				}
+      div.top {
+        max-height: 4vh;
+        display: flex;
+        flex-direction: row;
+        padding: 1vh 1vw;
+        color: $gray0;
+        background-color: $gray80;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        position: relative;
+        min-height: 2.5vh;
+        p {
+          margin: 0;
+          padding: 0;
+        }
 
-				p.name {
-					position: absolute;
-					left: 3%;
-				}
+        p.name {
+          position: absolute;
+          left: 3%;
+        }
 
-				p.client {
-					position: absolute;
-					left: 40%;
-				}
+        p.client {
+          position: absolute;
+          left: 40%;
+        }
 
-				p.status {
-					position: absolute;
-					left: 58%;
-				}
+        p.status {
+          position: absolute;
+          left: 58%;
+        }
 
-				p.date {
-					position: absolute;
-					left: 76%;
-				}
-			}
+        p.date {
+          position: absolute;
+          left: 76%;
+        }
+      }
 
-			div.casesList {
-				min-height: 50vh;
-				max-height: 60vh;
-				overflow-y: scroll;
-				@include disappear-scrollbar;
+      div.casesList {
+        min-height: 50vh;
+        max-height: 60vh;
+        overflow-y: scroll;
+        @include disappear-scrollbar;
 
-				li {
-					list-style: none;
-					border-bottom: 1px solid $border;
+        li {
+          list-style: none;
+          border-bottom: 1px solid $border;
 
-					&:last-child {
-						border-bottom: none;
-					}
-				}
-			}
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+        div.loaderWrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 16px;
+		  div.loader {
+			border: 4px solid #f3f3f3;
+			border-top: 4px solid #3498db;
+			border-radius: 50%;
+			width: 24px;
+			height: 24px;
+			animation: spin 1s linear infinite;
+		  }
+        }
+      }
 
-			div.bottom {
-				border-top: 1px solid $border;
-				display: flex;
-				flex-direction: row;
-				justify-content: start;
-				align-items: center;
-				font-size: 0.8rem;
-				padding: 1.5vh 1vw;
-				color: $gray60;
+      div.bottom {
+        border-top: 1px solid $border;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        font-size: 0.8rem;
+        padding: 1.5vh 1vw;
+        color: $gray60;
 
-				div.delete {
-					border-right: 1px solid $border;
-					padding: 0.25vh 0.5vw;
-					display: flex;
-					align-items: center;
-					cursor: pointer;
-				}
+        div.delete {
+          border-right: 1px solid $border;
+          padding: 0.25vh 0.5vw;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+        }
 
-				div.archive {
-					padding: 0.25vh 0.5vw;
-					display: flex;
-					align-items: center;
-					cursor: pointer;
-				}
-			}
-		}
+        div.archive {
+          padding: 0.25vh 0.5vw;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+        }
+      }
+    }
 
-		button.newCase {
-			color: $white;
-			width: fit-content;
-			background-color: $blue60;
-			border: none;
-			padding: 2vh 3vw;
-			border-radius: 12px;
-			cursor: pointer;
-			align-self: flex-end;
-		}
-	}
+    button.newCase {
+      color: $white;
+      width: fit-content;
+      background-color: $blue60;
+      border: none;
+      padding: 2vh 3vw;
+      border-radius: 12px;
+      cursor: pointer;
+      align-self: flex-end;
+    }
+  }
 }

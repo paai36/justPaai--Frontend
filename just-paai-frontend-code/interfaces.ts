@@ -3,6 +3,7 @@ export interface CaseInterface {
     ClientName: string;
     Status: "O" | "A";
     DateStarted: string;
+    id?: string;
 }
 export interface userInterface {
     imageUrl: string;

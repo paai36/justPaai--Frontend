@@ -8,11 +8,8 @@ import { signIn, signOut } from "../config/firebaseApp";
 import { useRouter } from "next/navigation";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import api from "../axios"
-import axios from "axios";
 export default function Home() {
   const router = useRouter();
-  // const baseURL = 'https://justipaai.com/api/v1/'; // replace with your base URL
-  // const api = axios.create({ baseURL });
 
   const handleLogin = async () => {
       signIn().then(async (user: any) => {
@@ -20,14 +17,16 @@ export default function Home() {
           user.user?.email
         ) {
           const idt = await(user.user.getIdToken());
+          console.log(idt);
           try {
             const res = await api.post(`/users/login/`, {
-              id_token: idt
+              id_token: idt,
             });
             console.log("here");
+            console.log(res);
             if (Math.floor(res.status / 100) === 2) {
               console.log(res);
-              localStorage.setItem("id_token", idt);
+              localStorage.setItem("access_token", res.data.access_token);
               router.push("/onboarding"); //Will work after api integration
             } else { }
           } catch (error) {
