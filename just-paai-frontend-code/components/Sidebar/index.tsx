@@ -123,21 +123,35 @@ export default function Sidebar() {
                 </div>
             </div>
             <div className={styles.cal}>
-                <div
-                    className={styles.calendarHeader}
-                    onClick={() => setIsModalOpen(true)}
-                >
-                    <div className={styles.left}>
-                        {currentDate.toLocaleString("default", {
-                            month: "long",
-                            year: "numeric",
-                        })}
-                    </div>
-                    <div className={styles.right}>
-                        <button onClick={handlePrevMonth}>{"<"}</button>
-                        <button onClick={handleNextMonth}>{">"}</button>
-                    </div>
-                </div>
+            <div className={styles.calendarHeader}>
+    <div 
+        className={styles.left} 
+        onClick={() => setIsModalOpen(true)}
+    >
+        {currentDate.toLocaleString("default", {
+            month: "long",
+            year: "numeric",
+        })}
+    </div>
+    <div className={styles.right}>
+        <button
+            onClick={(e) => {
+                e.stopPropagation(); // Prevent opening the modal
+                handlePrevMonth();
+            }}
+        >
+            {"<"}
+        </button>
+        <button
+            onClick={(e) => {
+                e.stopPropagation(); // Prevent opening the modal
+                handleNextMonth();
+            }}
+        >
+            {">"}
+        </button>
+    </div>
+</div>
                 <div className={styles.daysRow}>
                     {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, index) => (
                         <div key={index}>{day}</div>
