@@ -17,54 +17,61 @@
     cursor: pointer;
   }
   
-  .monthView, .weekView {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow: hidden;
-  }
-  
-  .monthHeader, .weekHeader, .weekRow {
-    display: flex;
-  }
-  
-  .dayHeader, .dateCell, .hourCell {
-    flex: 1;
-    border: 1px solid #ddd;
+  .calendarContent {
     position: relative;
   }
   
+  .monthView, .weekView {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .monthHeader, .weekHeader {
+    display: flex;
+  }
+  
+  .hourPlaceholder {
+    width: 60px;
+  }
+  
+  .dayHeader {
+    flex: 1;
+    border: 1px solid #ddd;
+    padding: 10px;
+    font-weight: bold;
+  }
+  
+  .monthBody {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .weekRow {
+    display: flex;
+  }
+  
   .dateCell {
+    flex: 1;
     height: 100px;
     padding: 5px;
+    border: 1px solid #ddd;
     cursor: pointer;
+    position: relative;
   }
   
-  .hourCell {
-    height: 50px;
-    cursor: pointer;
+  .hourGrid {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 600px;
+  
+    /* Hide scrollbar across all browsers */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
   }
   
-  .dateCell:hover, .hourCell:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .events {
-    margin-top: 5px;
-  }
-  
-  .event {
-    background: #ffdd57;
-    border-radius: 3px;
-    padding: 3px;
-    font-size: 12px;
-    margin-bottom: 3px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .emptyCell {
-    background-color: #f9f9f9;
+  .hourGrid::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Edge */
   }
   
   .hourRow {
@@ -77,4 +84,30 @@
     padding-right: 10px;
     font-size: 12px;
     line-height: 50px;
+  }
+  
+  .hourCell {
+    flex: 1;
+    height: 50px;
+    border: 1px solid #ddd;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .events {
+    margin-top: 5px;
+  }
+  
+  .event {
+    background: #ffdd57;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
+    margin: 3px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .emptyCell {
+    background-color: #f9f9f9;
   }
